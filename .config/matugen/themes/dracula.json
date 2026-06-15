@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Dracula",
+        "author": "Zeno Rocha",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#282a36"
+        },
+        "foreground": {
+            "color": "#f8f8f2"
+        },
+        "cursor": {
+            "color": "#f8f8f2"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#262626"
+        },
+        "red": {
+            "color": "#e64747"
+        },
+        "green": {
+            "color": "#42e66c"
+        },
+        "yellow": {
+            "color": "#e4f34a"
+        },
+        "blue": {
+            "color": "#9b6bdf"
+        },
+        "magenta": {
+            "color": "#e356a7"
+        },
+        "cyan": {
+            "color": "#75d7ec"
+        },
+        "white": {
+            "color": "#f8f8f2"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#7a7a7a"
+        },
+        "red": {
+            "color": "#ff5555"
+        },
+        "green": {
+            "color": "#50fa7b"
+        },
+        "yellow": {
+            "color": "#f1fa8c"
+        },
+        "blue": {
+            "color": "#bd93f9"
+        },
+        "magenta": {
+            "color": "#ff79c6"
+        },
+        "cyan": {
+            "color": "#8be9fd"
+        },
+        "white": {
+            "color": "#f9f9fb"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#343746"
+        },
+        "surface2": {
+            "color": "#44475a"
+        },
+        "surface3": {
+            "color": "#6272a4"
+        },
+        "border": {
+            "color": "#bd93f9"
+        },
+        "inactive": {
+            "color": "#21222c"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#bd93f9"
+        },
+        "secondary": {
+            "color": "#ff79c6"
+        },
+        "tertiary": {
+            "color": "#8be9fd"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#ff5555"
+        },
+        "warning": {
+            "color": "#f1fa8c"
+        },
+        "success": {
+            "color": "#50fa7b"
+        }
+    }
+}

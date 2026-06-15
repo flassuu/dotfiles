@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Nothing (Dark)",
+        "author": "flassuu",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#1B1B1D"
+        },
+        "foreground": {
+            "color": "#c6c8c8"
+        },
+        "cursor": {
+            "color": "#d4d4d4"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#121212"
+        },
+        "red": {
+            "color": "#ff0000"
+        },
+        "green": {
+            "color": "#00ff00"
+        },
+        "yellow": {
+            "color": "#ffff00"
+        },
+        "blue": {
+            "color": "#0000ff"
+        },
+        "magenta": {
+            "color": "#ff00ff"
+        },
+        "cyan": {
+            "color": "#00ffff"
+        },
+        "white": {
+            "color": "#ffffff"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#666666"
+        },
+        "red": {
+            "color": "#ff3333"
+        },
+        "green": {
+            "color": "#33ff33"
+        },
+        "yellow": {
+            "color": "#ffff33"
+        },
+        "blue": {
+            "color": "#3333ff"
+        },
+        "magenta": {
+            "color": "#ff33ff"
+        },
+        "cyan": {
+            "color": "#33ffff"
+        },
+        "white": {
+            "color": "#dddddd"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#080808"
+        },
+        "surface2": {
+            "color": "#303033"
+        },
+        "surface3": {
+            "color": "#444444"
+        },
+        "border": {
+            "color": "#7a7a7a"
+        },
+        "inactive": {
+            "color": "#000000"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#D71921"
+        },
+        "secondary": {
+            "color": "#b03030"
+        },
+        "tertiary": {
+            "color": "#661414"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#ff0000"
+        },
+        "warning": {
+            "color": "#ffff00"
+        },
+        "success": {
+            "color": "#00ff00"
+        }
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Tokyo Night Storm",
+        "author": "folke",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#24283b"
+        },
+        "foreground": {
+            "color": "#c0caf5"
+        },
+        "cursor": {
+            "color": "#c0caf5"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#414868"
+        },
+        "red": {
+            "color": "#f7768e"
+        },
+        "green": {
+            "color": "#9ece6a"
+        },
+        "yellow": {
+            "color": "#e0af68"
+        },
+        "blue": {
+            "color": "#7aa2f7"
+        },
+        "magenta": {
+            "color": "#bb9af7"
+        },
+        "cyan": {
+            "color": "#7dcfff"
+        },
+        "white": {
+            "color": "#c0caf5"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#414868"
+        },
+        "red": {
+            "color": "#f7768e"
+        },
+        "green": {
+            "color": "#9ece6a"
+        },
+        "yellow": {
+            "color": "#e0af68"
+        },
+        "blue": {
+            "color": "#7aa2f7"
+        },
+        "magenta": {
+            "color": "#bb9af7"
+        },
+        "cyan": {
+            "color": "#7dcfff"
+        },
+        "white": {
+            "color": "#c0caf5"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#2f3549"
+        },
+        "surface2": {
+            "color": "#444b6a"
+        },
+        "surface3": {
+            "color": "#565f89"
+        },
+        "border": {
+            "color": "#7aa2f7"
+        },
+        "inactive": {
+            "color": "#1f2335"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#7aa2f7"
+        },
+        "secondary": {
+            "color": "#bb9af7"
+        },
+        "tertiary": {
+            "color": "#7dcfff"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#f7768e"
+        },
+        "warning": {
+            "color": "#e0af68"
+        },
+        "success": {
+            "color": "#9ece6a"
+        }
+    }
+}

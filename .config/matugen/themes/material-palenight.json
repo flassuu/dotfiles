@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Material Palenight",
+        "author": "Base16 Gallery",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#292d3e"
+        },
+        "foreground": {
+            "color": "#959dcb"
+        },
+        "cursor": {
+            "color": "#959dcb"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#292d3e"
+        },
+        "red": {
+            "color": "#f07178"
+        },
+        "green": {
+            "color": "#c3e88d"
+        },
+        "yellow": {
+            "color": "#ffcb6b"
+        },
+        "blue": {
+            "color": "#82aaff"
+        },
+        "magenta": {
+            "color": "#c792ea"
+        },
+        "cyan": {
+            "color": "#89ddff"
+        },
+        "white": {
+            "color": "#959dcb"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#676e95"
+        },
+        "red": {
+            "color": "#f07178"
+        },
+        "green": {
+            "color": "#c3e88d"
+        },
+        "yellow": {
+            "color": "#ffcb6b"
+        },
+        "blue": {
+            "color": "#82aaff"
+        },
+        "magenta": {
+            "color": "#c792ea"
+        },
+        "cyan": {
+            "color": "#89ddff"
+        },
+        "white": {
+            "color": "#ffffff"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#32374d"
+        },
+        "surface2": {
+            "color": "#444b6a"
+        },
+        "surface3": {
+            "color": "#676e95"
+        },
+        "border": {
+            "color": "#82aaff"
+        },
+        "inactive": {
+            "color": "#1b1e2b"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#c792ea"
+        },
+        "secondary": {
+            "color": "#89ddff"
+        },
+        "tertiary": {
+            "color": "#c3e88d"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#f07178"
+        },
+        "warning": {
+            "color": "#ffcb6b"
+        },
+        "success": {
+            "color": "#c3e88d"
+        }
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Neon Night",
+        "author": "Gogh",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#20242d"
+        },
+        "foreground": {
+            "color": "#c9cccd"
+        },
+        "cursor": {
+            "color": "#8ce8ff"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#20242d"
+        },
+        "red": {
+            "color": "#ff8e8e"
+        },
+        "green": {
+            "color": "#7efdd0"
+        },
+        "yellow": {
+            "color": "#fcad3f"
+        },
+        "blue": {
+            "color": "#69b4f9"
+        },
+        "magenta": {
+            "color": "#dd92f6"
+        },
+        "cyan": {
+            "color": "#8ce8ff"
+        },
+        "white": {
+            "color": "#c9cccd"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#404655"
+        },
+        "red": {
+            "color": "#ff8e8e"
+        },
+        "green": {
+            "color": "#7efdd0"
+        },
+        "yellow": {
+            "color": "#fcad3f"
+        },
+        "blue": {
+            "color": "#69b4f9"
+        },
+        "magenta": {
+            "color": "#dd92f6"
+        },
+        "cyan": {
+            "color": "#8ce8ff"
+        },
+        "white": {
+            "color": "#c9cccd"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#2a2f3a"
+        },
+        "surface2": {
+            "color": "#353b49"
+        },
+        "surface3": {
+            "color": "#404655"
+        },
+        "border": {
+            "color": "#69b4f9"
+        },
+        "inactive": {
+            "color": "#1a1d24"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#8ce8ff"
+        },
+        "secondary": {
+            "color": "#dd92f6"
+        },
+        "tertiary": {
+            "color": "#7efdd0"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#ff8e8e"
+        },
+        "warning": {
+            "color": "#fcad3f"
+        },
+        "success": {
+            "color": "#7efdd0"
+        }
+    }
+}

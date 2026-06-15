@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Rosé Pine",
+        "author": "rose-pine",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#191724"
+        },
+        "foreground": {
+            "color": "#e0def4"
+        },
+        "cursor": {
+            "color": "#524f67"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#26233a"
+        },
+        "red": {
+            "color": "#eb6f92"
+        },
+        "green": {
+            "color": "#31748f"
+        },
+        "yellow": {
+            "color": "#f6c177"
+        },
+        "blue": {
+            "color": "#9ccfd8"
+        },
+        "magenta": {
+            "color": "#c4a7e7"
+        },
+        "cyan": {
+            "color": "#ebbcba"
+        },
+        "white": {
+            "color": "#e0def4"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#6e6a86"
+        },
+        "red": {
+            "color": "#eb6f92"
+        },
+        "green": {
+            "color": "#31748f"
+        },
+        "yellow": {
+            "color": "#f6c177"
+        },
+        "blue": {
+            "color": "#9ccfd8"
+        },
+        "magenta": {
+            "color": "#c4a7e7"
+        },
+        "cyan": {
+            "color": "#ebbcba"
+        },
+        "white": {
+            "color": "#e0def4"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#1f1d2e"
+        },
+        "surface2": {
+            "color": "#26233a"
+        },
+        "surface3": {
+            "color": "#403d52"
+        },
+        "border": {
+            "color": "#403d52"
+        },
+        "inactive": {
+            "color": "#191724"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#c4a7e7"
+        },
+        "secondary": {
+            "color": "#eb6f92"
+        },
+        "tertiary": {
+            "color": "#f6c177"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#eb6f92"
+        },
+        "warning": {
+            "color": "#f6c177"
+        },
+        "success": {
+            "color": "#31748f"
+        }
+    }
+}

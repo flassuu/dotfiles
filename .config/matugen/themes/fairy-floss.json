@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Fairy Floss",
+        "author": "Sailorhg",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#42395d"
+        },
+        "foreground": {
+            "color": "#f8f8f2"
+        },
+        "cursor": {
+            "color": "#ffb8d1"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#42395d"
+        },
+        "red": {
+            "color": "#a8757b"
+        },
+        "green": {
+            "color": "#ff857f"
+        },
+        "yellow": {
+            "color": "#e6c000"
+        },
+        "blue": {
+            "color": "#ae81ff"
+        },
+        "magenta": {
+            "color": "#716799"
+        },
+        "cyan": {
+            "color": "#c2ffdf"
+        },
+        "white": {
+            "color": "#f8f8f2"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#75507b"
+        },
+        "red": {
+            "color": "#ffb8d1"
+        },
+        "green": {
+            "color": "#f1568e"
+        },
+        "yellow": {
+            "color": "#d5a425"
+        },
+        "blue": {
+            "color": "#c5a3ff"
+        },
+        "magenta": {
+            "color": "#8077a8"
+        },
+        "cyan": {
+            "color": "#c2ffff"
+        },
+        "white": {
+            "color": "#f8f8f0"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#4b416a"
+        },
+        "surface2": {
+            "color": "#5d4d7a"
+        },
+        "surface3": {
+            "color": "#716799"
+        },
+        "border": {
+            "color": "#ffb8d1"
+        },
+        "inactive": {
+            "color": "#3b3352"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#ffb8d1"
+        },
+        "secondary": {
+            "color": "#c5a3ff"
+        },
+        "tertiary": {
+            "color": "#fff352"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#f1568e"
+        },
+        "warning": {
+            "color": "#e6c000"
+        },
+        "success": {
+            "color": "#c2ffdf"
+        }
+    }
+}

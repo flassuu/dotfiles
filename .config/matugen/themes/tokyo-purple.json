@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "name": "Tokyo Purple",
+    "author": "flassuu",
+    "variant": "dark"
+  },
+
+  "base": {
+    "background": { "color": "#0b0b12" },
+    "foreground": { "color": "#d8d5ff" },
+    "cursor": { "color": "#9d7bff" }
+  },
+
+  "normal": {
+    "black": { "color": "#1a1a22" },
+    "red": { "color": "#c792ea" },
+    "green": { "color": "#a3be8c" },
+    "yellow": { "color": "#c4a7e7" },
+    "blue": { "color": "#8a7fff" },
+    "magenta": { "color": "#bb9af7" },
+    "cyan": { "color": "#7dcfff" },
+    "white": { "color": "#e0def4" }
+  },
+
+  "bright": {
+    "black": { "color": "#2a2a37" },
+    "red": { "color": "#d4a5ff" },
+    "green": { "color": "#b8e0a0" },
+    "yellow": { "color": "#d7bfff" },
+    "blue": { "color": "#9aa5ff" },
+    "magenta": { "color": "#c7a9ff" },
+    "cyan": { "color": "#9fe0ff" },
+    "white": { "color": "#ffffff" }
+  },
+
+  "ui": {
+    "surface": { "color": "#12121a" },
+    "surface2": { "color": "#1e1e2a" },
+    "surface3": { "color": "#2a2a3a" },
+    "border": { "color": "#2e2e3e" },
+    "inactive": { "color": "#6b6b80" }
+  },
+
+  "accent": {
+    "primary": { "color": "#9d7bff" },
+    "secondary": { "color": "#7a5cff" },
+    "tertiary": { "color": "#c084fc" }
+  },
+
+  "state": {
+    "error": { "color": "#ff5370" },
+    "warning": { "color": "#ffc777" },
+    "success": { "color": "#a3be8c" }
+  }
+}

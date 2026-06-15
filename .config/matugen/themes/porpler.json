@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Porpler",
+        "author": "Base16 Gallery",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#292c36"
+        },
+        "foreground": {
+            "color": "#d8d8d8"
+        },
+        "cursor": {
+            "color": "#d8d8d8"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#292c36"
+        },
+        "red": {
+            "color": "#f84547"
+        },
+        "green": {
+            "color": "#95c76f"
+        },
+        "yellow": {
+            "color": "#efa16b"
+        },
+        "blue": {
+            "color": "#8485ce"
+        },
+        "magenta": {
+            "color": "#b74989"
+        },
+        "cyan": {
+            "color": "#64878f"
+        },
+        "white": {
+            "color": "#d8d8d8"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#65568a"
+        },
+        "red": {
+            "color": "#f84547"
+        },
+        "green": {
+            "color": "#95c76f"
+        },
+        "yellow": {
+            "color": "#efa16b"
+        },
+        "blue": {
+            "color": "#8485ce"
+        },
+        "magenta": {
+            "color": "#b74989"
+        },
+        "cyan": {
+            "color": "#64878f"
+        },
+        "white": {
+            "color": "#f8f8f8"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#333745"
+        },
+        "surface2": {
+            "color": "#474b59"
+        },
+        "surface3": {
+            "color": "#65568a"
+        },
+        "border": {
+            "color": "#8485ce"
+        },
+        "inactive": {
+            "color": "#1f2129"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#8485ce"
+        },
+        "secondary": {
+            "color": "#b74989"
+        },
+        "tertiary": {
+            "color": "#64878f"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#f84547"
+        },
+        "warning": {
+            "color": "#efa16b"
+        },
+        "success": {
+            "color": "#95c76f"
+        }
+    }
+}

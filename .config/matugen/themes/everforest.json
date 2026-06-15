@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Everforest Dark",
+        "author": "sainnhe",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#2d353b"
+        },
+        "foreground": {
+            "color": "#d3c6aa"
+        },
+        "cursor": {
+            "color": "#d3c6aa"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#475258"
+        },
+        "red": {
+            "color": "#e67e80"
+        },
+        "green": {
+            "color": "#a7c080"
+        },
+        "yellow": {
+            "color": "#dbbc7e"
+        },
+        "blue": {
+            "color": "#7fbbb3"
+        },
+        "magenta": {
+            "color": "#d699b6"
+        },
+        "cyan": {
+            "color": "#83c092"
+        },
+        "white": {
+            "color": "#d3c6aa"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#475258"
+        },
+        "red": {
+            "color": "#e67e80"
+        },
+        "green": {
+            "color": "#a7c080"
+        },
+        "yellow": {
+            "color": "#dbbc7e"
+        },
+        "blue": {
+            "color": "#7fbbb3"
+        },
+        "magenta": {
+            "color": "#d699b6"
+        },
+        "cyan": {
+            "color": "#83c092"
+        },
+        "white": {
+            "color": "#d3c6aa"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#343f44"
+        },
+        "surface2": {
+            "color": "#3d484d"
+        },
+        "surface3": {
+            "color": "#475258"
+        },
+        "border": {
+            "color": "#4f585e"
+        },
+        "inactive": {
+            "color": "#2d353b"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#a7c080"
+        },
+        "secondary": {
+            "color": "#dbbc7e"
+        },
+        "tertiary": {
+            "color": "#7fbbb3"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#e67e80"
+        },
+        "warning": {
+            "color": "#e69875"
+        },
+        "success": {
+            "color": "#a7c080"
+        }
+    }
+}

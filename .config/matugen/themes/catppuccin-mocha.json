@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Catppuccin Mocha",
+        "author": "Catppuccin",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#1e1e2e"
+        },
+        "foreground": {
+            "color": "#cdd6f4"
+        },
+        "cursor": {
+            "color": "#f5e0dc"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#45475a"
+        },
+        "red": {
+            "color": "#f38ba8"
+        },
+        "green": {
+            "color": "#a6e3a1"
+        },
+        "yellow": {
+            "color": "#f9e2af"
+        },
+        "blue": {
+            "color": "#89b4fa"
+        },
+        "magenta": {
+            "color": "#cba6f7"
+        },
+        "cyan": {
+            "color": "#94e2d5"
+        },
+        "white": {
+            "color": "#bac2de"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#585b70"
+        },
+        "red": {
+            "color": "#f38ba8"
+        },
+        "green": {
+            "color": "#a6e3a1"
+        },
+        "yellow": {
+            "color": "#f9e2af"
+        },
+        "blue": {
+            "color": "#89b4fa"
+        },
+        "magenta": {
+            "color": "#cba6f7"
+        },
+        "cyan": {
+            "color": "#89dceb"
+        },
+        "white": {
+            "color": "#a6adc8"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#313244"
+        },
+        "surface2": {
+            "color": "#45475a"
+        },
+        "surface3": {
+            "color": "#585b70"
+        },
+        "border": {
+            "color": "#6c7086"
+        },
+        "inactive": {
+            "color": "#7f849c"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#cba6f7"
+        },
+        "secondary": {
+            "color": "#89b4fa"
+        },
+        "tertiary": {
+            "color": "#f5c2e7"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#f38ba8"
+        },
+        "warning": {
+            "color": "#fab387"
+        },
+        "success": {
+            "color": "#a6e3a1"
+        }
+    }
+}

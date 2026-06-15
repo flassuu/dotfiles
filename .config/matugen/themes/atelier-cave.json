@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Atelier Cave",
+        "author": "Base16 Gallery",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#19171c"
+        },
+        "foreground": {
+            "color": "#8b8792"
+        },
+        "cursor": {
+            "color": "#8b8792"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#19171c"
+        },
+        "red": {
+            "color": "#be4678"
+        },
+        "green": {
+            "color": "#2a9292"
+        },
+        "yellow": {
+            "color": "#a06e3b"
+        },
+        "blue": {
+            "color": "#576ddb"
+        },
+        "magenta": {
+            "color": "#955ae7"
+        },
+        "cyan": {
+            "color": "#398bc6"
+        },
+        "white": {
+            "color": "#8b8792"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#655f6d"
+        },
+        "red": {
+            "color": "#be4678"
+        },
+        "green": {
+            "color": "#2a9292"
+        },
+        "yellow": {
+            "color": "#a06e3b"
+        },
+        "blue": {
+            "color": "#576ddb"
+        },
+        "magenta": {
+            "color": "#955ae7"
+        },
+        "cyan": {
+            "color": "#398bc6"
+        },
+        "white": {
+            "color": "#efecf4"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#26242a"
+        },
+        "surface2": {
+            "color": "#38353d"
+        },
+        "surface3": {
+            "color": "#655f6d"
+        },
+        "border": {
+            "color": "#576ddb"
+        },
+        "inactive": {
+            "color": "#131115"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#576ddb"
+        },
+        "secondary": {
+            "color": "#398bc6"
+        },
+        "tertiary": {
+            "color": "#955ae7"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#be4678"
+        },
+        "warning": {
+            "color": "#a06e3b"
+        },
+        "success": {
+            "color": "#2a9292"
+        }
+    }
+}

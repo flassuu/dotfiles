@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Gruvbox Material",
+        "author": "sainnhe",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#282828"
+        },
+        "foreground": {
+            "color": "#dfbf8e"
+        },
+        "cursor": {
+            "color": "#dfbf8e"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#32302f"
+        },
+        "red": {
+            "color": "#ea6962"
+        },
+        "green": {
+            "color": "#a9b665"
+        },
+        "yellow": {
+            "color": "#d8a657"
+        },
+        "blue": {
+            "color": "#7daea3"
+        },
+        "magenta": {
+            "color": "#d3869b"
+        },
+        "cyan": {
+            "color": "#89b482"
+        },
+        "white": {
+            "color": "#dfbf8e"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#928374"
+        },
+        "red": {
+            "color": "#ea6962"
+        },
+        "green": {
+            "color": "#a9b665"
+        },
+        "yellow": {
+            "color": "#d8a657"
+        },
+        "blue": {
+            "color": "#7daea3"
+        },
+        "magenta": {
+            "color": "#d3869b"
+        },
+        "cyan": {
+            "color": "#89b482"
+        },
+        "white": {
+            "color": "#dfbf8e"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#32302f"
+        },
+        "surface2": {
+            "color": "#3c3836"
+        },
+        "surface3": {
+            "color": "#504945"
+        },
+        "border": {
+            "color": "#665c54"
+        },
+        "inactive": {
+            "color": "#282828"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#d8a657"
+        },
+        "secondary": {
+            "color": "#a9b665"
+        },
+        "tertiary": {
+            "color": "#7daea3"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#ea6962"
+        },
+        "warning": {
+            "color": "#e78a4e"
+        },
+        "success": {
+            "color": "#a9b665"
+        }
+    }
+}

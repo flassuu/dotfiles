@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Nord",
+        "author": "Arctic Ice Studio",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#2e3440"
+        },
+        "foreground": {
+            "color": "#d8dee9"
+        },
+        "cursor": {
+            "color": "#eceff4"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#3b4252"
+        },
+        "red": {
+            "color": "#bf616a"
+        },
+        "green": {
+            "color": "#a3be8c"
+        },
+        "yellow": {
+            "color": "#ebcb8b"
+        },
+        "blue": {
+            "color": "#81a1c1"
+        },
+        "magenta": {
+            "color": "#b48ead"
+        },
+        "cyan": {
+            "color": "#88c0d0"
+        },
+        "white": {
+            "color": "#e5e9f0"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#4c566a"
+        },
+        "red": {
+            "color": "#bf616a"
+        },
+        "green": {
+            "color": "#a3be8c"
+        },
+        "yellow": {
+            "color": "#ebcb8b"
+        },
+        "blue": {
+            "color": "#81a1c1"
+        },
+        "magenta": {
+            "color": "#b48ead"
+        },
+        "cyan": {
+            "color": "#8fbcbb"
+        },
+        "white": {
+            "color": "#eceff4"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#3b4252"
+        },
+        "surface2": {
+            "color": "#434c5e"
+        },
+        "surface3": {
+            "color": "#4c566a"
+        },
+        "border": {
+            "color": "#81a1c1"
+        },
+        "inactive": {
+            "color": "#2e3440"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#88c0d0"
+        },
+        "secondary": {
+            "color": "#81a1c1"
+        },
+        "tertiary": {
+            "color": "#5e81ac"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#bf616a"
+        },
+        "warning": {
+            "color": "#d08770"
+        },
+        "success": {
+            "color": "#a3be8c"
+        }
+    }
+}

@@ -1,0 +1,109 @@
+{
+    "meta": {
+        "name": "Catppuccin Frappé",
+        "author": "Catppuccin",
+        "variant": "dark"
+    },
+    "base": {
+        "background": {
+            "color": "#303446"
+        },
+        "foreground": {
+            "color": "#c6d0f5"
+        },
+        "cursor": {
+            "color": "#f2d5cf"
+        }
+    },
+    "normal": {
+        "black": {
+            "color": "#51576d"
+        },
+        "red": {
+            "color": "#e78284"
+        },
+        "green": {
+            "color": "#a6d189"
+        },
+        "yellow": {
+            "color": "#e5c890"
+        },
+        "blue": {
+            "color": "#8caaee"
+        },
+        "magenta": {
+            "color": "#f4b8e4"
+        },
+        "cyan": {
+            "color": "#81c8be"
+        },
+        "white": {
+            "color": "#b5bfe2"
+        }
+    },
+    "bright": {
+        "black": {
+            "color": "#626880"
+        },
+        "red": {
+            "color": "#e78284"
+        },
+        "green": {
+            "color": "#a6d189"
+        },
+        "yellow": {
+            "color": "#e5c890"
+        },
+        "blue": {
+            "color": "#8caaee"
+        },
+        "magenta": {
+            "color": "#f4b8e4"
+        },
+        "cyan": {
+            "color": "#81c8be"
+        },
+        "white": {
+            "color": "#a5adce"
+        }
+    },
+    "ui": {
+        "surface": {
+            "color": "#414559"
+        },
+        "surface2": {
+            "color": "#51576d"
+        },
+        "surface3": {
+            "color": "#626880"
+        },
+        "border": {
+            "color": "#737994"
+        },
+        "inactive": {
+            "color": "#292c3c"
+        }
+    },
+    "accent": {
+        "primary": {
+            "color": "#ca9ee6"
+        },
+        "secondary": {
+            "color": "#8caaee"
+        },
+        "tertiary": {
+            "color": "#eebebe"
+        }
+    },
+    "state": {
+        "error": {
+            "color": "#e78284"
+        },
+        "warning": {
+            "color": "#ef9f76"
+        },
+        "success": {
+            "color": "#a6d189"
+        }
+    }
+}
