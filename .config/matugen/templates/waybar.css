@@ -1,0 +1,17 @@
+/* Hand-writed by flassuu */
+@define-color background {{ base.background.hex }};
+@define-color foreground {{ base.foreground.hex }};
+
+@define-color surface {{ ui.surface.hex }};
+@define-color surface2 {{ ui.surface2.hex }};
+@define-color surface3 {{ ui.surface3.hex }};
+@define-color border {{ ui.border.hex }};
+@define-color inactive {{ ui.inactive.hex }};
+
+@define-color primary {{ accent.primary.hex }};
+@define-color secondary {{ accent.secondary.hex }};
+@define-color tertiary {{ accent.tertiary.hex }};
+
+@define-color error {{ state.error.hex }};
+@define-color warning {{ state.warning.hex }};
+@define-color success {{ state.success.hex }};

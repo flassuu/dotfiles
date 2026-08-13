@@ -1,9 +1,1 @@
-# only matugen themes are public
-/*
-!.gitignore
-!.stow-local-ignore
-!.config
-.config/*
-!.config/matugen
-.config/matugen/*
-!.config/matugen/themes
+.stow-local-ignore

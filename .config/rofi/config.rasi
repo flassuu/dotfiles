@@ -1,0 +1,8 @@
+configuration {
+    modi: "drun,run,window,ssh,combi";
+    show-icons: true;
+    icon-theme: "Papirus";
+    terminal: "kitty";
+}
+
+@theme "~/.config/rofi/style.rasi"

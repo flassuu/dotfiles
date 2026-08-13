@@ -1,7 +1,0 @@
-^\.git
-^\.github
-^\.config/vesktop/(sessionData|Crashpad)/
-^\.config/vesktop/settings/dist/
-
-.*\.md
-.*\.png 
