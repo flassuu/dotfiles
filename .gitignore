@@ -1,1 +1,5 @@
 .stow-local-ignore
+
+# vesktop: only themes are public, keep settings and caches local
+.config/vesktop/*
+!.config/vesktop/themes
