@@ -63,8 +63,8 @@
         "active-only": false,
         "on-click": "activate",
         "disable-scroll": false,
-        "on-scroll-up": "hyprctl dispatch workspace -1",
-        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"+1\" })'",
         "persistent-workspaces": {
 	    "3":[],
 	    "4":[],
@@ -151,7 +151,7 @@
         "return-type": "json",
         "format": "{}",
         "rotate": 0,
-        "on-click": "hyprctl dispatch exec 'systemupdate.sh up'",
+        "on-click": "hyprctl dispatch 'hl.dsp.exec_cmd(\"systemupdate.sh up\")'",
         "interval": 86400, // once every day
         "tooltip": true,
         "signal": 20

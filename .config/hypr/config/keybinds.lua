@@ -92,25 +92,25 @@ hl.bind(mainMod .. " + CTRL + ALT + left", hl.dsp.window.move({ workspace = "r-1
 -- floating -> move by delta, tiled -> swap with neighbour in direction.
 -- Same shell pipeline as in the previous config (repeating + description).
 local MOVE_ACTIVE =
-	'grep -q "true" <<< "$(hyprctl activewindow -j | jq -r .floating)" && hyprctl dispatch moveactive %d %d || hyprctl dispatch movewindow %s'
+	'grep -q "true" <<< "$(hyprctl activewindow -j | jq -r .floating)" && hyprctl dispatch \'hl.dsp.window.move({ x = %d, y = %d, relative = true })\' || hyprctl dispatch \'hl.dsp.window.move({ direction = \"%s\" })\''
 hl.bind(
 	mainMod .. " + SHIFT + CTRL + left",
-	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, -30, 0, "l")),
+	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, -30, 0, "left")),
 	{ repeating = true, description = "Move activewindow left" }
 )
 hl.bind(
 	mainMod .. " + SHIFT + CTRL + right",
-	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, 30, 0, "r")),
+	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, 30, 0, "right")),
 	{ repeating = true, description = "Move activewindow right" }
 )
 hl.bind(
 	mainMod .. " + SHIFT + CTRL + up",
-	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, 0, -30, "u")),
+	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, 0, -30, "up")),
 	{ repeating = true, description = "Move activewindow up" }
 )
 hl.bind(
 	mainMod .. " + SHIFT + CTRL + down",
-	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, 0, 30, "d")),
+	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, 0, 30, "down")),
 	{ repeating = true, description = "Move activewindow down" }
 )
 
