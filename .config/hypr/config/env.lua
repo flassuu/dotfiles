@@ -1,10 +1,10 @@
--- █▀▀ █▄░█ █░█
--- ██▄ █░▀█ ▀▄▀
+-- █▀▀ █▄ █ █ █
+-- ██▄ █ ▀█ ▀▄▀
 --
 -- Env: environment variables for the graphical session.
 -- Docs: https://wiki.hypr.land/configuring/core/environment-variables/
 
-local home    = os.getenv("HOME")
+local home = os.getenv("HOME")
 local scrPath = home .. "/.local/bin"
 
 hl.env("HYPRSHOT_DIR", home .. "/Pictures/Screenshots")
