@@ -1,5 +1,5 @@
--- █ █ █▄█ █▀█ █▀█ █ ▄▀█ █▄░█ █▀▄
--- █ █  █  █▀▀ █▀▄ █▄▄ █▀█ █░▀█ █▄▀
+-- █ █ █▄█ █▀█ █▀█ █  ▄▀█ █▄ █ █▀▄
+-- █▀█  █  █▀▀ █▀▄ █▄ █▀█ █ ▀█ █▄▀
 --
 -- Hyprland: entry point that loads every config module.
 -- Docs: https://wiki.hypr.land/configuring/
