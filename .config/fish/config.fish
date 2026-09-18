@@ -39,3 +39,14 @@ end
 # --- Final Checks ---
 # Created by `pipx` on 2026-02-14 11:59:54
 set -gx PATH $PATH /home/user/.local/bin
+
+# pnpm
+set -gx PNPM_HOME '/home/user/.local/share/pnpm'
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
