@@ -1,10 +1,9 @@
--- ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
--- █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+-- ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█ █▀
+-- █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█ ▄█
 --
--- Lua-порт animations.conf + animations/animations-default.conf
--- https://wiki.hypr.land/configuring/core/animations/
---
--- credit https://github.com/prasanthrangan/hyprdots
+-- Animations: bezier curves and transition behavior.
+-- Docs: https://wiki.hypr.land/configuring/core/animations/
+-- Curves from hyprdots: https://github.com/prasanthrangan/hyprdots
 
 hl.config({
     animations = {
@@ -12,11 +11,11 @@ hl.config({
     },
 })
 
--- bezier-кривые из animations-default.conf
-hl.curve("wind",   { type = "bezier", points = { { x = 0.05, y = 0.9 }, { x = 0.1, y = 1.05 } } })
-hl.curve("winIn",  { type = "bezier", points = { { x = 0.1,  y = 1.1 }, { x = 0.1, y = 1.1 } } })
-hl.curve("winOut", { type = "bezier", points = { { x = 0.3,  y = -0.3 }, { x = 0,   y = 1 } } })
-hl.curve("liner",  { type = "bezier", points = { { x = 1,    y = 1 },    { x = 1,   y = 1 } } })
+-- Bezier curves (from animations-default.conf)
+hl.curve("wind",   { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
+hl.curve("winIn",  { type = "bezier", points = { { 0.1, 1.1 }, { 0.1, 1.1 } } })
+hl.curve("winOut", { type = "bezier", points = { { 0.3, -0.3 }, { 0, 1 } } })
+hl.curve("liner",  { type = "bezier", points = { { 1, 1 }, { 1, 1 } } })
 
 -- animation = leaf, enabled, speed, bezier, style
 hl.animation({ leaf = "windows",          enabled = true, speed = 6,  bezier = "wind",   style = "slide" })

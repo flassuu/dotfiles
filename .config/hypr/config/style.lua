@@ -1,7 +1,8 @@
--- █▀ ▀█▀ █▄█ █   █▀▀
--- ▄█  █   █  █▄▄ ██▄
+-- █▀ ▀█▀ █▄█ █ █▀▀
+-- ▄█ ░█░  █  █▄▄ ██▄
 --
--- Lua-порт style.conf: внешний вид (general/group/decoration).
+-- Style: visual appearance — general, group and decoration.
+-- Docs: https://wiki.hypr.land/configuring/core/variables/
 
 local Colors = require("config.colors")
 
@@ -11,7 +12,7 @@ hl.config({
         gaps_out        = 4,
         border_size     = 1,
         col = {
-            active_border   = Colors.primary,   -- gradient: можно и { colors = {...}, angle = 45 }
+            active_border   = Colors.primary,   -- also accepts a gradient: { colors = {...}, angle = 45 }
             inactive_border = Colors.inactive,
         },
         layout          = "dwindle",
@@ -33,7 +34,7 @@ hl.config({
 
         blur = {
             enabled           = true,
-            special           = true,   -- expensive, но было включено в старом конфиге
+            special           = true,   -- expensive, but was enabled in the previous config
             size              = 2,
             passes            = 5,
             new_optimizations = true,

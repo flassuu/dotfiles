@@ -1,8 +1,8 @@
 -- █▀▄▀█ █▀█ █▄░█ █ ▀█▀ █▀█ █▀█ █▀
 -- █░▀░█ █▄█ █░▀█ █ ░█░ █▄█ █▀▄ ▄█
 --
--- Lua-порт monitors.conf
--- https://wiki.hypr.land/configuring/core/monitors/
+-- Monitors: outputs, resolution, position and scaling.
+-- Docs: https://wiki.hypr.land/configuring/core/monitors/
 
 hl.monitor({
     output   = "eDP-1",

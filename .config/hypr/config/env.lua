@@ -1,8 +1,8 @@
--- █▀▀ █▄ █ █ █ █ █▀▄ █▀█ █▄ █ █▄█ █▀▀ █▄ █ ▀█▀
--- ██▄ █ ▀█ ▀▄▀ █ █▀▄ █▄█ █ ▀█ █▀█ ██▄ █ ▀█  █
+-- █▀▀ █▄░█ █░█
+-- ██▄ █░▀█ ▀▄▀
 --
--- Lua-порт env.conf: переменные графического окружения.
--- https://wiki.hypr.land/configuring/core/environment-variables/
+-- Env: environment variables for the graphical session.
+-- Docs: https://wiki.hypr.land/configuring/core/environment-variables/
 
 local home    = os.getenv("HOME")
 local scrPath = home .. "/.local/bin"

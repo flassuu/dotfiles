@@ -1,9 +1,9 @@
--- █ █▄ █ █▀█ █ █ ▀█▀
--- █ █ ▀█ █▀▀ █▄█  █
+-- █ █▄░█ █▀█ █ █ ▀█▀
+-- █ █░▀█ █▀▀ █▄█ ░█░
 --
--- Lua-порт input.conf: ввод, устройства и жесты тачпада.
--- https://wiki.hypr.land/configuring/core/config-options/#input
--- https://wiki.hypr.land/configuring/core/binds/gestures/
+-- Input: keyboard layout, mouse, touchpad and gestures.
+-- Docs: https://wiki.hypr.land/configuring/core/config-options/#input
+--       https://wiki.hypr.land/configuring/core/binds/gestures/
 
 hl.config({
     input = {

@@ -1,14 +1,15 @@
--- █ █ █ █ █▄ █ █▀▄ █▀█ █ █ █   █▀█ █ █ █   █▀▀ █▀
--- ▀▄▀▄▀ █ █ ▀█ █▄▀ █▄█ ▀▄▀▄▀   █▀▄ █▄█ █▄▄ ██▄ ▄█
+-- █ █ █ █ █▄░█ █▀▄ █▀█ █ █ █    █▀█ █ █ █ █▀▀ █▀
+-- ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀    █▀▄ █▄█ █▄▄ ██▄ ▄█
 --
--- Lua-порт windowrules.conf (активные правила окон).
--- https://wiki.hypr.land/configuring/core/rules/window-rules/
+-- Window rules: window and layer rules by class, title or namespace.
+-- Docs: https://wiki.hypr.land/configuring/core/rules/window-rules/
+--       https://wiki.hypr.land/configuring/core/rules/layer-rules/
 
 hl.window_rule({
     name = "godot-only-game-float",
     match = {
         initial_title = "^Godot$",
-        initial_class = "negative:^Godot$", -- float только игровое окно, не редактор
+        initial_class = "negative:^Godot$", -- float only the game window, not the editor
     },
     float  = true,
     center = true,

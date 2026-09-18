@@ -1,25 +1,23 @@
--- █ █▄ █ █▀▀ █   █ █ █▀▄ █▀▀
--- █ █ ▀█ █▄▄ █▄▄ █▄█ █▄▀ ██▄
+-- █ █ █▄█ █▀█ █▀█ █ ▄▀█ █▄░█ █▀▄
+-- █ █  █  █▀▀ █▀▄ █▄▄ █▀█ █░▀█ █▄▀
 --
--- Hyprland main config, Lua edition (Hyprland 0.55+)
+-- Hyprland: entry point that loads every config module.
 -- Docs: https://wiki.hypr.land/configuring/
 --
--- Модульная структура повторяет старый .conf пакет:
---   hyprland.lua        -> точка входа (этот файл)
---   config/animations   -> анимации/кривые (было animations.conf + animations-default.conf)
---   config/autostart    -> автозапуск (hyprland.start)
---   config/common       -> курсор/шрифты через gsettings
---   config/colors       -> цвета, генерируется matugen
---   config/env          -> переменные окружения
---   config/input        -> ввод/устройства/жесты
---   config/keybinds     -> клавиатурные бинды
---   config/layouts      -> dwindle
---   config/misc         -> misc/xwayland/ecosystem
---   config/monitors     -> мониторы
---   config/style        -> general/group/decoration
---   config/variables    -> пути и приложения
---   config/windowrules  -> правила окон (активные)
---   config/windowrulesold -> старые правила (НЕ подключается, как и windowrulesold.conf)
+-- Modules:
+--   config/animations   -> animation curves and transitions
+--   config/autostart    -> processes started with the session
+--   config/common       -> cursor and fonts applied on session start
+--   config/colors       -> matugen-generated color palette
+--   config/env          -> environment variables
+--   config/input        -> input devices and gestures
+--   config/keybinds     -> keybindings and dispatcher actions
+--   config/layouts      -> dwindle layout options
+--   config/misc         -> misc, xwayland and ecosystem options
+--   config/monitors     -> outputs, resolution and scaling
+--   config/style        -> general, group and decoration settings
+--   config/variables    -> shared paths and defaults
+--   config/windowrules  -> window and layer rules
 
 require("config.animations")
 require("config.autostart")
@@ -33,4 +31,3 @@ require("config.monitors")
 require("config.style")
 require("config.variables")
 require("config.windowrules")
--- require("config.windowrulesold") -- mirror старого windowrulesold.conf: не подключался и раньше

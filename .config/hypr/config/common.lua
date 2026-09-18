@@ -1,7 +1,8 @@
--- █▀▀ █░█ █▀█ █▀ █▀█ █▀█
--- █▄▄ █▄█ █▀▄ ▄█ █▄█ █▀▄
+-- █▀▀ █▀█ █▀▄▀█ █▀▄▀█ █▀█ █▄░█
+-- █▄▄ █▄█ █░▀░█ █░▀░█ █▄█ █░▀█
 --
--- Lua-порт common.conf: курсор и шрифты (выполняются при старте сессии).
+-- Common: cursor and font settings applied at session start.
+-- Docs: https://wiki.hypr.land/configuring/core/config-options/
 
 hl.on("hyprland.start", function()
     -- Cursor

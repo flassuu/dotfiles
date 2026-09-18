@@ -1,15 +1,14 @@
--- █ █ ▄▀█ █▀█ █ ▄▀█ █▄▄ █   █▀▀ █▀
+-- █░█ ▄▀█ █▀█ █ ▄▀█ █▄▄ █ █▀▀ █▀
 -- ▀▄▀ █▀█ █▀▄ █ █▀█ █▄█ █▄▄ ██▄ ▄█
 --
--- Lua-порт variables.conf: общие пути и приложения.
--- Модуль возвращает таблицу, остальные модули подключают её через
---   local V = require("config.variables")
+-- Variables: shared paths and app defaults, loaded via require().
+-- Docs: https://wiki.hypr.land/configuring/core/lua-utilities/
 
 local home = os.getenv("HOME")
 
 return {
     -- Path
-    scrPath = home .. "/.local/bin",              -- default scripts path
+    scrPath = home .. "/.local/bin",              -- default scripts directory
 
     -- Apps
     term       = "kitty",

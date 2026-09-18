@@ -1,7 +1,8 @@
 -- █▀▄▀█ █ █▀ █▀▀
--- █ ▀ █ █ ▄█ █▄▄
+-- █░▀░█ █ ▄█ █▄▄
 --
--- Lua-порт misc.conf: прочие настройки.
+-- Misc: miscellaneous, xwayland and ecosystem options.
+-- Docs: https://wiki.hypr.land/configuring/core/variables/
 
 hl.config({
     misc = {
@@ -20,5 +21,5 @@ hl.config({
     },
 })
 
--- render был закомментирован в старом конфиге:
+-- render was commented out in the previous config:
 -- hl.config({ render = { cm_fs_passthrough = 0 } })
