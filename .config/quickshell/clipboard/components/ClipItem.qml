@@ -6,12 +6,20 @@ import QtQuick.Layouts
 Rectangle {
     id: root
 
-    required property var entry
+    // Quickshell injects the model item (one object of the JS-array model)
+    // into this required property — this is the ONLY way delegates receive
+    // data in this quickshell version (bare `model`/`modelData` are not in
+    // scope, and ListModel role access is unreliable).
+    required property var modelData
+    property var entry: root.modelData
     property var service: null
     property var pal: null
     property bool isCurrent: false
 
-    implicitHeight: rowLayout.height + 12
+    // Fixed row height: a binding like `rowLayout.height + 12` created a
+    // feedback loop (height of rowLayout depends on parent height) and made
+    // every delegate collapse into a thin strip.
+    implicitHeight: 52
     radius: 10
 
     color: root.isCurrent || root.hovered
@@ -93,7 +101,7 @@ Rectangle {
                 width: parent.width
                 elide: Text.ElideMiddle
                 text: root.entry.isImage
-                    ? "Изображение · " + root.entry.imageWidth + "×" + root.entry.imageHeight
+                    ? "Image · " + root.entry.imageWidth + "×" + root.entry.imageHeight
                     : root.service.textOf(root.entry.raw).replace(/\s+/g, " ")
                 color: root.pal.fg
                 font.family: "monospace"

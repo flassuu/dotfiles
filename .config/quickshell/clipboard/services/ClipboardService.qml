@@ -11,14 +11,28 @@ Scope {
     property bool available: false
     property bool loading: false
     property list<string> entries: []
-    property var pins: []                 // JS array of raw cliphist entries
+    property var pins: []                 // raw cliphist entry lines, shown first
     property string search: ""
     property bool injectPaste: true
     property int pasteDelayMs: 180
 
     readonly property string pinsFile: "~/.cache/quickshell-clipboard/pins.txt"
     readonly property string previewsDir: "/tmp/quickshell-clipboard/previews"
-    readonly property var model: computeModel()
+    // Plain JS array of entry objects. Updated IMPERATIVELY from
+    // onEntriesChanged/onPinsChanged/onSearchChanged: quickshell's compiler
+    // does not track dependencies inside function-call bindings, so a
+    // `property var model: computeModel()` binding would only evaluate once.
+    // Quickshell injects each object into the delegate's
+    // `required property var modelData` (roles/list models are unreliable).
+    property var model: []
+
+    onEntriesChanged: root.refreshModel()
+    onPinsChanged: root.refreshModel()
+    onSearchChanged: root.refreshModel()
+
+    function refreshModel() {
+        root.model = root.computeModel()
+    }
 
     // Fired after a paste is requested so the shell can hide the panel
     // (focus goes back to the previous app) before Ctrl+V is injected.
@@ -63,23 +77,26 @@ Scope {
 
     function relTime(ts) {
         const d = Date.now() / 1000 - ts
-        if (d < 60) return "только что"
-        if (d < 3600) return Math.floor(d / 60) + " мин назад"
-        if (d < 86400) return Math.floor(d / 3600) + " ч назад"
+        if (d < 60) return "just now"
+        if (d < 3600) return Math.floor(d / 60) + " min ago"
+        if (d < 86400) return Math.floor(d / 3600) + " h ago"
         const date = new Date(ts * 1000)
-        return date.toLocaleDateString("ru-RU", { day: "2-digit", month: "short" })
+        return date.toLocaleDateString("en-US", { day: "2-digit", month: "short" })
     }
 
+    // Rebuilds the view model from entries + pins + search. Pinned entries go
+    // first; everything is filtered by a substring/fuzzy search.
     function computeModel() {
         const q = root.search.trim().toLowerCase()
-        const pinned = [...root.pins]
+        const entrySet = new Set(root.entries)
+        const pinned = root.pins.filter(p => entrySet.has(p))
         const pinnedSet = new Set(pinned)
         const out = []
-        const push = (raw, pinned) => {
+        const push = (raw, isPinned) => {
             if (!root.fuzzyMatch(root.textOf(raw), q)) return
             out.push({
                 raw: raw,
-                pinned: pinned,
+                pinned: isPinned,
                 isImage: root.isImage(raw),
                 imageWidth: root.imageWidth(raw),
                 imageHeight: root.imageHeight(raw),
@@ -141,6 +158,7 @@ Scope {
         const idx = root.pins.indexOf(raw)
         if (idx >= 0) root.pins.splice(idx, 1)
         else root.pins.push(raw)
+        root.pins = [...root.pins] // reassign so onPinsChanged fires
         root.persistPins()
     }
     function persistPins() {
@@ -166,6 +184,13 @@ Scope {
             if (exitCode === 0) {
                 root.entries = listProc.buffer
                 root.available = true
+                // Drop pins whose entry no longer exists in the history
+                // (e.g. it was wiped or deleted), so stale rows can't linger.
+                const entrySet = new Set(root.entries)
+                if (root.pins.some(p => !entrySet.has(p))) {
+                    root.pins = root.pins.filter(p => entrySet.has(p))
+                    root.persistPins()
+                }
             } else {
                 root.available = false
                 console.error("[Clipboard] '" + root.binary + "' failed with code", exitCode)
@@ -192,11 +217,16 @@ Scope {
 
     Process {
         id: readPins
+        property var buffer: []
         command: ["bash", "-c", "[ -f " + root.pinsFile + " ] && cat " + root.pinsFile]
         stdout: SplitParser {
             onRead: (line) => {
-                if (line && !root.pins.includes(line)) root.pins.push(line)
+                if (line && !readPins.buffer.includes(line)) readPins.buffer.push(line)
             }
+        }
+        onExited: {
+            root.pins = readPins.buffer
+            readPins.buffer = []
         }
     }
 
