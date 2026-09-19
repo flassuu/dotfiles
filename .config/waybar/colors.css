@@ -1,17 +1,17 @@
 /* Hand-writed by flassuu */
-@define-color background #1e1e2e;
-@define-color foreground #cdd6f4;
+@define-color background #111314;
+@define-color foreground #b3b8c3;
 
-@define-color surface #313244;
-@define-color surface2 #45475a;
-@define-color surface3 #585b70;
-@define-color border #6c7086;
-@define-color inactive #7f849c;
+@define-color surface #202425;
+@define-color surface2 #303537;
+@define-color surface3 #343d46;
+@define-color border #7d8fa4;
+@define-color inactive #111314;
 
-@define-color primary #cba6f7;
-@define-color secondary #89b4fa;
-@define-color tertiary #f5c2e7;
+@define-color primary #7d8fa4;
+@define-color secondary #85a7a5;
+@define-color tertiary #a47996;
 
-@define-color error #f38ba8;
-@define-color warning #fab387;
-@define-color success #a6e3a1;
+@define-color error #b04b57;
+@define-color warning #e5c179;
+@define-color success #87b379;

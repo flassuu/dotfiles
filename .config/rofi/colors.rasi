@@ -1,38 +1,38 @@
 /* Hand-writed by flassuu */
 * {
-	background: #1e1e2e;
-	foreground: #cdd6f4;
-	cursor: #f5e0dc;
+	background: #111314;
+	foreground: #b3b8c3;
+	cursor: #ffffff;
 
-	surface: #313244;
-	surface2: #45475a;
-	surface3: #585b70;
-	border: #6c7086;
-	inactive: #7f849c;
+	surface: #202425;
+	surface2: #303537;
+	surface3: #343d46;
+	border: #7d8fa4;
+	inactive: #111314;
 
-	primary: #cba6f7;
-	secondary: #89b4fa;
-	tertiary: #f5c2e7;
+	primary: #7d8fa4;
+	secondary: #85a7a5;
+	tertiary: #a47996;
 
-	error: #f38ba8;
-	warning: #fab387;
-	success: #a6e3a1;
+	error: #b04b57;
+	warning: #e5c179;
+	success: #87b379;
 
-	black: #45475a;
-	red: #f38ba8;
-	green: #a6e3a1;
-	yellow: #f9e2af;
-	blue: #89b4fa;
-	magenta: #cba6f7;
-	cyan: #94e2d5;
-	white: #bac2de;
+	black: #000000;
+	red: #b04b57;
+	green: #87b379;
+	yellow: #e5c179;
+	blue: #7d8fa4;
+	magenta: #a47996;
+	cyan: #85a7a5;
+	white: #b3b8c3;
 
-	brightblack: #585b70;
-	brightred: #f38ba8;
-	brightgreen: #a6e3a1;
-	brightyellow: #f9e2af;
-	brightblue: #89b4fa;
-	brightmagenta: #cba6f7;
-	brightcyan: #89dceb;
-	brightwhite: #a6adc8;
+	brightblack: #000000;
+	brightred: #b04b57;
+	brightgreen: #87b379;
+	brightyellow: #e5c179;
+	brightblue: #7d8fa4;
+	brightmagenta: #a47996;
+	brightcyan: #85a7a5;
+	brightwhite: #ffffff;
 }

@@ -5,21 +5,21 @@
 -- Docs: https://wiki.hypr.land/configuring/core/variables/
 -- matugen: https://github.com/InioX/matugen
 return {
-	background = "rgba(1e1e2eff)",
-	foreground = "rgba(cdd6f4ff)",
-	cursor = "rgba(f5e0dcff)",
+	background = "rgba(111314ff)",
+	foreground = "rgba(b3b8c3ff)",
+	cursor = "rgba(ffffffff)",
 
-	surface = "rgba(313244ff)",
-	surface2 = "rgba(45475aff)",
-	surface3 = "rgba(585b70ff)",
-	border = "rgba(6c7086ff)",
-	inactive = "rgba(7f849cff)",
+	surface = "rgba(202425ff)",
+	surface2 = "rgba(303537ff)",
+	surface3 = "rgba(343d46ff)",
+	border = "rgba(7d8fa4ff)",
+	inactive = "rgba(111314ff)",
 
-	primary = "rgba(cba6f7ff)",
-	secondary = "rgba(89b4faff)",
-	tertiary = "rgba(f5c2e7ff)",
+	primary = "rgba(7d8fa4ff)",
+	secondary = "rgba(85a7a5ff)",
+	tertiary = "rgba(a47996ff)",
 
-	error = "rgba(f38ba8ff)",
-	warning = "rgba(fab387ff)",
-	success = "rgba(a6e3a1ff)",
+	error = "rgba(b04b57ff)",
+	warning = "rgba(e5c179ff)",
+	success = "rgba(87b379ff)",
 }
