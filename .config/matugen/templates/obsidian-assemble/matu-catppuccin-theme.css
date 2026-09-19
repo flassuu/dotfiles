@@ -1,0 +1,607 @@
+/* ============================================
+   Matu-catppuccin — Theme Template
+   Sections: aliases → mappings → body → styling
+   Palette is injected before this by the
+   assembly script (obsidian-theme-assemble)
+   ============================================ */
+
+/* --------------------------------------------
+   2. ALIASES — internal names from palette
+   -------------------------------------------- */
+.theme-dark {
+  /* Text shades (foreground → background) */
+  --tx-0: var(--background);
+  --tx-1: var(--foreground);
+  --tx-2: color-mix(in srgb, var(--foreground) 85%, var(--background));
+  --tx-3: color-mix(in srgb, var(--foreground) 75%, var(--background));
+  --tx-4: color-mix(in srgb, var(--foreground) 50%, var(--background));
+  --tx-5: color-mix(in srgb, var(--foreground) 35%, var(--background));
+
+  /* Background shades (dark → light) */
+  --bg-1: var(--surface3);
+  --bg-2: var(--surface2);
+  --bg-3: var(--surface);
+  --bg-4: var(--background);
+
+  /* Hover / Active (transparent overlays) */
+  --hover: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --active: color-mix(in srgb, var(--foreground) 20%, transparent);
+  --active-2: color-mix(in srgb, var(--foreground) 30%, transparent);
+
+  /* Accent shades (primary → darker) */
+  --accent-1: var(--primary);
+  --accent-2: var(--secondary);
+  --accent-3: var(--tertiary);
+  --accent-4: color-mix(in srgb, var(--primary) 55%, var(--background));
+  --accent-5: color-mix(in srgb, var(--primary) 40%, var(--background));
+
+  /* Borders */
+  --border-light: var(--hover);
+  --border-c: color-mix(in srgb, var(--border) 20%, transparent);
+  --border-hover: color-mix(in srgb, var(--primary) 65%, transparent);
+
+  /* Named colors (aliases for rgb() calls) */
+  --red-1: var(--red);
+  --red-2: var(--brightred);
+  --green-1: var(--green);
+  --green-2: var(--brightgreen);
+  --blue-1: var(--blue);
+  --blue-2: var(--brightblue);
+  --yellow-1: var(--yellow);
+  --yellow-2: var(--brightyellow);
+  --purple-1: var(--primary);
+  --purple-2: var(--secondary);
+  --purple-3: var(--tertiary);
+  --purple-4: var(--accent-4);
+  --purple-5: var(--accent-5);
+
+  /* Dark variants (for sidebars, panels) */
+  --bg-dark: color-mix(in srgb, var(--background) 90%, black);
+  --bg-darker: color-mix(in srgb, var(--background) 80%, black);
+}
+
+/* --------------------------------------------
+   3. COLOR MAPPINGS — Obsidian variables
+   -------------------------------------------- */
+.theme-dark {
+  /* Obsidian core vars */
+  --background-primary: var(--bg-4);
+  --background-primary-alt: color-mix(in srgb, var(--bg-4) 75%, black);
+  --background-secondary: var(--bg-4);
+  --background-secondary-alt: var(--bg-3);
+  --background-modifier-hover: var(--hover);
+  --background-modifier-active-hover: var(--active);
+  --background-modifier-border: var(--border-c);
+  --background-modifier-border-hover: var(--accent-2);
+  --background-modifier-border-focus: var(--accent-2);
+  --background-modifier-form-field: var(--bg-3);
+
+  /* Text */
+  --text-normal: var(--tx-3);
+  --text-muted: var(--tx-3);
+  --text-faint: var(--tx-5);
+  --text-on-accent: var(--tx-0);
+  --text-accent: var(--accent-1);
+  --text-accent-hover: var(--accent-2);
+  --text-selection: var(--active-2);
+
+  /* Interactive */
+  --interactive-normal: var(--bg-2);
+  --interactive-hover: var(--bg-1);
+  --interactive-accent: var(--accent-3);
+  --interactive-accent-hover: var(--accent-4);
+
+  /* Color aliases */
+  --color-accent: var(--accent-1);
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-red: var(--red-1);
+  --color-red-rgb: var(--rgb-red);
+  --color-green: var(--green-1);
+  --color-green-rgb: var(--rgb-green);
+  --color-orange: var(--yellow-1);
+  --color-orange-rgb: var(--rgb-yellow);
+  --color-yellow: var(--yellow-1);
+  --color-yellow-rgb: var(--rgb-yellow);
+  --color-cyan: var(--blue-1);
+  --color-cyan-rgb: var(--rgb-blue);
+  --color-blue: var(--blue-1);
+  --color-blue-rgb: var(--rgb-blue);
+  --color-purple: var(--purple-1);
+  --color-purple-rgb: var(--rgb-purple);
+  --color-pink: var(--red-1);
+  --color-pink-rgb: var(--rgb-red);
+
+  /* Titlebar */
+  --titlebar-background: var(--bg-3);
+  --titlebar-background-focused: var(--bg-3);
+  --tab-container-background: var(--bg-4);
+  --tab-divider-color: transparent;
+  --divider-color: var(--border-c);
+
+  /* Scrollbar */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: var(--bg-3);
+  --scrollbar-active-thumb-bg: var(--active-2);
+
+  /* Headings */
+  --h1-color: var(--tx-1);
+  --h2-color: var(--tx-1);
+  --h3-color: var(--tx-2);
+  --h4-color: var(--tx-2);
+  --h5-color: var(--tx-2);
+  --h6-color: var(--tx-4);
+  --h1-weight: 600;
+  --h2-weight: 600;
+  --h3-weight: 500;
+  --h4-weight: 500;
+  --h5-weight: 500;
+  --h6-weight: 500;
+  --inline-title-color: var(--tx-1);
+
+  /* Markdown */
+  --code-background: var(--bg-3);
+  --code-normal: var(--tx-2);
+  --code-comment: var(--tx-5);
+  --blockquote-border-color: var(--accent-2);
+  --blockquote-border-thickness: 2px;
+  --hr-color: var(--border-c);
+  --table-border-color: var(--border-c);
+  --table-header-weight: 500;
+  --embed-border-left: 2px solid var(--accent-2);
+
+  /* Tags */
+  --tag-background: transparent;
+  --tag-color: var(--accent-1);
+  --tag-border-color: var(--border-c);
+  --tag-border-width: 1px;
+
+  /* Checkboxes */
+  --checkbox-color: var(--accent-3);
+  --checkbox-color-hover: var(--accent-4);
+  --checkbox-border-color: var(--tx-4);
+  --checkbox-marker-color: var(--tx-0);
+
+  /* Links */
+  --link-color: var(--accent-1);
+  --link-color-hover: var(--accent-2);
+  --link-unresolved-color: var(--red-2);
+  --link-external-color: var(--accent-1);
+  --link-external-color-hover: var(--accent-2);
+
+  /* Lists */
+  --list-marker-color: var(--tx-5);
+  --collapse-icon-color: var(--tx-5);
+  --collapse-icon-color-collapsed: var(--accent-2);
+
+  /* Graph */
+  --graph-line: var(--bg-1);
+  --graph-node: var(--tx-4);
+  --graph-node-tag: var(--green-2);
+  --graph-node-attachment: var(--yellow-2);
+}
+
+/* --------------------------------------------
+   4. BODY VARIABLES — Layout, sizing
+   -------------------------------------------- */
+body {
+  letter-spacing: -0.03ch;
+
+  --gap: 4px;
+  --border-thickness: 2px;
+  --border-hover-transition: 0.2s ease;
+  --label-color: var(--tx-4);
+  --label-font-size: 11px;
+
+  
+--radius-s: 4px;
+  --radius-m: 4px;
+  --radius-l: 4px;
+  --radius-xl: 4px;
+  --input-radius: 4px;
+  --clickable-icon-radius: 4px;
+  --checkbox-radius: 4px;
+  --toggle-radius: 2px;
+  --toggle-thumb-radius: 4px;
+  --slider-thumb-radius: 4px;
+  --tag-radius: 4px;
+  --callout-radius: 4px;
+  --pill-radius: 4px;
+  --button-radius: 4px;
+
+  --bold-weight: 600;
+  --tab-outline-width: 0;
+}
+
+/* --------------------------------------------
+   5. STYLING
+   -------------------------------------------- */
+
+/* --- Hide folder icons (built-in) --- */
+.nav-folder .nav-folder-title .nav-folder-title-content::before,
+.nav-folder.is-collapsed .nav-folder-title .nav-folder-title-content::before {
+  display: none;
+}
+
+.nav-folder-collapse-indicator,
+.nav-folder.mod-root > .nav-folder-title .nav-folder-title-content::before {
+  display: none;
+}
+
+/* --- Bold folder title (built-in) --- */
+.nav-folder-title-content {
+  font-weight: var(--font-bold);
+}
+
+/* --- Workspace layout --- */
+body {
+}
+
+.app-container,
+.horizontal-main-container,
+.workspace {
+  background-color: var(--bg-3);
+}
+
+.workspace {
+  padding: var(--gap);
+  gap: var(--gap);
+}
+
+.workspace-split {
+  gap: var(--gap);
+  background-color: transparent;
+}
+
+/* --- Panels --- */
+.workspace-tabs {
+  position: relative;
+  overflow: visible;
+  background-color: var(--bg-darker);
+  border: var(--border-thickness) solid var(--border-c);
+  border-radius: 4px;
+  transition: border-color var(--border-hover-transition);
+}
+
+.workspace-tabs:hover {
+  border-color: var(--border-hover);
+}
+
+.workspace-tabs .workspace-tab-container {
+  background-color: var(--bg-darker);
+}
+
+.workspace .workspace-leaf-resize-handle {
+  background-color: transparent;
+  border: none;
+}
+
+/* --- Left sidebar --- */
+.workspace-split.mod-left-split,
+.workspace-split.mod-left-split .workspace-tab-container,
+.workspace-split.mod-left-split .workspace-leaf-content {
+  background-color: var(--bg-dark) !important;
+}
+
+.workspace-ribbon.mod-left {
+  background-color: var(--bg-dark);
+  border: var(--border-thickness) solid var(--border-c);
+  border-radius: 4px;
+  padding-top: 4px;
+  transition: border-color var(--border-hover-transition);
+}
+
+.workspace-ribbon.mod-left:hover {
+  border-color: var(--border-hover);
+}
+
+.workspace-ribbon.mod-left.is-collapsed {
+  background-color: var(--bg-dark);
+}
+
+/* --- Right sidebar --- */
+.workspace-split.mod-right-split,
+.workspace-split.mod-right-split .workspace-tab-container,
+.workspace-split.mod-right-split .workspace-leaf-content {
+  background-color: var(--bg-dark) !important;
+}
+
+.workspace-ribbon.mod-right {
+  background-color: var(--bg-dark);
+  border: var(--border-thickness) solid var(--border-c);
+  border-radius: 4px;
+  padding-top: 4px;
+  transition: border-color var(--border-hover-transition);
+}
+
+.workspace-ribbon.mod-right:hover {
+  border-color: var(--border-hover);
+}
+
+.workspace-ribbon.mod-right.is-collapsed {
+  background-color: var(--bg-dark);
+}
+
+/* --- Vault switcher --- */
+.workspace-sidedock-vault-profile {
+  background-color: var(--bg-4);
+  border: var(--border-thickness) solid var(--border-c);
+  border-radius: 4px;
+}
+
+/* --- Panel labels --- */
+.workspace-tabs::before,
+.status-bar::before {
+  content: 'panel';
+  position: absolute;
+  top: calc(-1 * var(--label-font-size) / 2 - 2px);
+  left: 8px;
+  z-index: 30;
+  padding: 0 5px;
+  background-color: var(--bg-3);
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+  font-weight: 500;
+  line-height: calc(var(--label-font-size) + 4px);
+  pointer-events: none;
+}
+
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='markdown'])::before { content: 'note'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='canvas'])::before { content: 'canvas'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='graph'])::before { content: 'graph'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='localgraph'])::before { content: 'graph'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='empty'])::before { content: 'empty'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='file-explorer'])::before { content: 'files'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='search'])::before { content: 'search'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='bookmarks'])::before { content: 'marks'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='tag'])::before { content: 'tags'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='outline'])::before { content: 'outline'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='backlink'])::before { content: 'links'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='outgoing-link'])::before { content: 'links'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='pdf'])::before { content: 'pdf'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='image'])::before { content: 'image'; }
+.workspace-tabs:has(.workspace-tab-header.is-active[data-type='release-notes'])::before { content: 'notes'; }
+
+.workspace-tabs:hover::before,
+.status-bar:hover::before {
+  color: var(--primary);
+}
+
+/* --- Tab headers --- */
+.workspace-tab-header-container {
+  background-color: transparent;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.workspace-tab-header {
+  border-radius: 0;
+}
+
+.workspace-tab-header.is-active {
+  background-color: var(--hover);
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--tx-1);
+}
+
+.workspace-tab-header-inner-title {
+  font-size: var(--font-ui-small);
+  color: var(--tx-3);
+}
+
+.workspace-tab-header-new-tab .clickable-icon,
+.workspace-tab-header-tab-list .clickable-icon {
+  border-radius: 0;
+}
+
+/* --- View header --- */
+.view-header {
+  background-color: var(--bg-4);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.view-header-title {
+  font-weight: 500;
+}
+
+/* --- Status bar --- */
+.status-bar {
+  position: fixed;
+  background-color: var(--bg-4);
+  border: var(--border-thickness) solid var(--border-c);
+  border-radius: 4px;
+  margin: 0 var(--gap) var(--gap) 0;
+  transition: border-color var(--border-hover-transition);
+  overflow: visible;
+}
+
+.status-bar:hover {
+  border-color: var(--border-hover);
+}
+
+.status-bar::before {
+  content: 'status';
+}
+
+.status-bar-item {
+  color: var(--tx-4);
+  font-size: var(--label-font-size);
+}
+
+/* --- Modals, prompts, menus, popovers --- */
+.modal,
+.prompt {
+  position: relative;
+  border: var(--border-thickness) solid var(--border-c);
+  border-radius: 4px;
+  background-color: var(--bg-4);
+  transition: border-color var(--border-hover-transition);
+}
+
+.modal:hover,
+.prompt:hover {
+  border-color: var(--border-hover);
+}
+
+.modal-close-button {
+  position: absolute !important;
+  top: 4px;
+  right: 4px;
+  z-index: 10;
+}
+
+.prompt::before,
+.modal::before {
+  content: 'dialog';
+  position: absolute;
+  top: 1px;
+  left: 8px;
+  z-index: 30;
+  padding: 0 5px;
+  background-color: var(--bg-4);
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+  font-weight: 500;
+  line-height: calc(var(--label-font-size) + 4px);
+  pointer-events: none;
+  transition: color var(--border-hover-transition);
+}
+
+.prompt:hover::before,
+.modal:hover::before {
+  color: var(--primary);
+}
+
+.prompt::before {
+  content: 'cmd' !important;
+}
+
+.modal.mod-settings::before {
+  content: 'settings' !important;
+}
+
+.modal.mod-settings .modal-content {
+  padding: 0 !important;
+}
+
+.modal.mod-settings .modal-content {
+  padding: 0 !important;
+  background-color: var(--bg-4);
+}
+
+.modal.mod-settings .modal-content .vertical-tab-content {
+  overflow: auto;
+  padding: 32px 16px !important;
+  background-color: var(--bg-4);
+}
+
+.modal.mod-settings .modal-content .vertical-tab-header {
+  overflow: auto;
+  background-color: var(--bg-4);
+}
+
+.modal.mod-settings .setting-item:last-child {
+  margin-bottom: 32px;
+}
+
+.menu {
+  border: 1px solid var(--border-c);
+  border-radius: 4px;
+  background-color: var(--bg-4);
+  box-shadow: none;
+}
+
+.menu-item {
+  border-radius: 4px;
+}
+
+.popover,
+.suggestion-container {
+  border: 1px solid var(--border-c);
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.suggestion-item.is-selected {
+  border-radius: 4px;
+}
+
+/* --- Editor & markdown --- */
+.markdown-source-view,
+.markdown-preview-view {
+  font-weight: 350;
+}
+
+.inline-title {
+}
+
+.markdown-rendered pre,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  border-radius: 4px;
+}
+
+.markdown-rendered pre {
+  border: 1px solid var(--border-light);
+}
+
+/* --- Tags --- */
+.tag,
+.cm-hashtag {
+  font-size: 0.85em;
+}
+
+/* --- Checkboxes --- */
+input[type='checkbox'] {
+  border-radius: 4px;
+}
+
+/* --- Callouts --- */
+.callout {
+  border: 1px solid rgba(var(--callout-color), 0.4);
+  background-color: rgba(var(--callout-color), 0.06);
+}
+
+/* --- Tables --- */
+.markdown-rendered table {
+  border-collapse: collapse;
+}
+
+.markdown-rendered th,
+.markdown-rendered td {
+  border: 1px solid var(--border-light);
+}
+
+/* --- Inputs & controls --- */
+button,
+.dropdown,
+input[type='text'],
+input[type='search'],
+input[type='number'],
+textarea {
+  border-radius: var(--radius-s);
+}
+
+.checkbox-container {
+  border-radius: 4px;
+}
+
+.checkbox-container::after {
+  border-radius: 4px;
+}
+
+/* --- Scrollbars --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--scrollbar-thumb-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 4px;
+  background-color: var(--scrollbar-active-thumb-bg);
+}
