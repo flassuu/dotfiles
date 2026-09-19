@@ -18,7 +18,7 @@ return {
 	office = "libreoffice", -- unused, kept for parity
 	lockscreen = "hyprlock",
 	code = "kitty -e nvim",
-	clipboard = "clipman pick -t rofi", -- unused, kept for parity
+	clipboard = "quickshell ipc -p ~/.config/quickshell-clipboard call clipboardPanel toggle", -- unused, kept for parity
 
 	-- Main modifier
 	mainMod = "SUPER",

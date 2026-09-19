@@ -16,5 +16,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hypridle") -- idle daemon (config stays in hypridle.conf)
 	hl.exec_cmd("easyeffects") -- sound control
 
-	hl.exec_cmd("wl-paste -t text --watch clipman store") -- clipboard manager
+	hl.exec_cmd("bash -c 'command -v cliphist >/dev/null 2>&1 && wl-paste --watch cliphist store || true'") -- clipboard history: text + screenshots
+	hl.exec_cmd("bash -c 'command -v quickshell >/dev/null 2>&1 && quickshell -n -d -p ~/.config/quickshell-clipboard || true'") -- clipboard panel (ALT+V)
+	hl.exec_cmd("bash -c 'command -v ydotoold >/dev/null 2>&1 && ydotoold || true'") -- paste injection daemon (ydotool)
 end)

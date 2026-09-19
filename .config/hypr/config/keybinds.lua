@@ -28,6 +28,9 @@ hl.bind("CTRL + SHIFT + Escape", hl.dsp.exec_cmd(V.term .. " -e btop")) -- resou
 hl.bind("ALT + Space", hl.dsp.exec_cmd(V.menu)) -- rofi drun
 hl.bind("ALT + R", hl.dsp.exec_cmd(V.scrPath .. "/rofi-app-menu")) -- apps menu script
 
+-- Clipboard panel (quickshell + cliphist)
+hl.bind("ALT + V", hl.dsp.exec_cmd("quickshell ipc -p ~/.config/quickshell-clipboard call clipboardPanel toggle")) -- clipboard panel
+
 -- Fn keys: volume control (locked + repeating)
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pamixer -t"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pamixer -d 5"), { locked = true, repeating = true })
