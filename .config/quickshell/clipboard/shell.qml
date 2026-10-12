@@ -37,9 +37,14 @@ PanelWindow {
         function open(): void { panel.openPanel() }
         function reload(): void { theme.refresh(); clipSvc.refresh(); clipSvc.loadPins() }
         function debug(): void {
+            let images = 0
+            for (const e of clipSvc.model) if (e.isImage) images++
             console.log("[DBG] avail=" + clipSvc.available + " entries=" + clipSvc.entries.length
-                + " model=" + clipSvc.model.length + " pins=" + clipSvc.pins.length
+                + " model=" + clipSvc.model.length + " images=" + images
+                + " pins=" + clipSvc.pins.length
                 + " loading=" + clipSvc.loading
+                + " open=" + panel.open
+                + " screen=" + (panel.screen ? panel.screen.name : "null")
                 + " search='" + clipSvc.search + "'"
                 + " first=" + (clipSvc.entries.length ? clipSvc.textOf(clipSvc.entries[0]) : "none"))
         }
@@ -185,7 +190,7 @@ PanelWindow {
                 Item { Layout.fillWidth: true }
 
                 HeaderButton {
-                    text: "🗑"
+                    text: "⌫"
                     iconColor: theme.fgMuted
                     pressedColor: theme.danger
                     onTriggered: {
@@ -335,10 +340,15 @@ PanelWindow {
                         service: clipSvc
                         pal: theme
                         isCurrent: ListView.isCurrentItem
-                        onCopyRequested: clipSvc.copy(raw)
-                        onPasteRequested: clipSvc.paste(raw)
-                        onDeleteRequested: clipSvc.deleteEntry(raw)
-                        onPinRequested: clipSvc.pinToggle(raw)
+                        // Signal parameters must be taken as formal JS
+                        // parameters: `onPinRequested: clipSvc.pinToggle(raw)`
+                        // silently passes undefined (QML does not inject signal
+                        // parameters into the handler body), which is why the
+                        // action chips did nothing at all.
+                        onCopyRequested: (raw) => clipSvc.copy(raw)
+                        onPasteRequested: (raw) => clipSvc.paste(raw)
+                        onDeleteRequested: (raw) => clipSvc.deleteEntry(raw)
+                        onPinRequested: (raw) => clipSvc.pinToggle(raw)
                     }
 
                     // thin custom scrollbar

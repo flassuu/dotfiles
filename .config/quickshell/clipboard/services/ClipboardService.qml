@@ -12,9 +12,18 @@ Scope {
     property bool loading: false
     property list<string> entries: []
     property var pins: []                 // raw cliphist entry lines, shown first
+    // cliphist does not store timestamps (its db is a flat binary blob), so
+    // the panel remembers when it first saw each entry id and ages it from
+    // there. Without this every row showed the entry id formatted as a date
+    // ("1/1/70").
+    property var seen: ({})            // entry id -> unix seconds of first sight
     property string search: ""
     property bool injectPaste: true
-    property int pasteDelayMs: 180
+    // Time between copying the entry to the clipboard and injecting Ctrl+V:
+    // the panel needs a moment to close and hand keyboard focus back to the
+    // previously focused window, otherwise the keypress lands on the dying
+    // panel and nothing is pasted.
+    property int pasteDelayMs: 250
 
     readonly property string pinsFile: "~/.cache/quickshell-clipboard/pins.txt"
     readonly property string previewsDir: "/tmp/quickshell-clipboard/previews"
@@ -45,8 +54,17 @@ Scope {
         const m = raw.match(/^(\d+)\t/)
         return m ? parseInt(m[1]) : 0
     }
+    // cliphist renders binary entries as `ID\t[[ binary data 89 KiB png 544x1039 ]]`
+    // (note the spaces around the marker) — the old pattern expected `[[binary`
+    // without them and therefore never matched a single screenshot.
     function isImage(raw) {
-        return /^\d+\t\[\[binary data.*\]\]$/.test(raw)
+        return /^\d+\t\[\[\s*binary data.*\]\s*\]$/.test(raw)
+    }
+    function imageMime(raw) {
+        const m = raw.match(/\b(jpe?g|png|webp|gif|bmp)\b/i)
+        if (!m) return "image/png"
+        const kind = m[1].toLowerCase()
+        return "image/" + (kind === "jpg" ? "jpeg" : kind)
     }
     function imageWidth(raw) {
         const m = raw.match(/(\d+)x(\d+)/)
@@ -76,12 +94,48 @@ Scope {
     }
 
     function relTime(ts) {
+        if (!ts) return "—"
         const d = Date.now() / 1000 - ts
         if (d < 60) return "just now"
         if (d < 3600) return Math.floor(d / 60) + " min ago"
         if (d < 86400) return Math.floor(d / 3600) + " h ago"
         const date = new Date(ts * 1000)
         return date.toLocaleDateString("en-US", { day: "2-digit", month: "short" })
+    }
+
+    // --- first-sight timestamps (cliphist has none) ---
+    function timeOf(raw) {
+        return root.seen[root.entryId(raw)] || 0
+    }
+    function rememberTimes() {
+        const now = Math.floor(Date.now() / 1000)
+        const live = new Set()
+        let dirty = false
+        for (const raw of root.entries) {
+            const id = root.entryId(raw)
+            live.add(id)
+            if (root.seen[id] === undefined) {
+                root.seen[id] = now
+                dirty = true
+            }
+        }
+        for (const id of Object.keys(root.seen)) {
+            if (!live.has(id)) {
+                delete root.seen[id]
+                dirty = true
+            }
+        }
+        if (dirty) {
+            root.seen = Object.assign({}, root.seen)
+            root.persistTimes()
+        }
+    }
+    function persistTimes() {
+        shCmd("mkdir -p ~/.cache/quickshell-clipboard && printf '%s' " + sq(JSON.stringify(root.seen))
+            + " > ~/.cache/quickshell-clipboard/times.json")
+    }
+    function loadTimes() {
+        timesProc.running = true
     }
 
     // Rebuilds the view model from entries + pins + search. Pinned entries go
@@ -124,15 +178,33 @@ Scope {
         listProc.running = true
     }
 
+    // Puts an entry on the system clipboard. Image entries are offered as real
+    // images (a bare `wl-copy` pastes the PNG blob as unreadable text), with a
+    // text fallback so text-only apps still get something.
+    function decodeToClipboard(raw) {
+        const pipe = "printf '%s' " + sq(raw) + " | " + root.binary + " decode"
+        if (isImage(raw)) {
+            return pipe + " | wl-copy --type " + imageMime(raw) + " --type 'text/plain;charset=utf-8'"
+        }
+        return pipe + " | wl-copy"
+    }
+
+    // Ctrl+V through ydotool, but only while its daemon is alive: injecting
+    // into nothing loses the keystroke silently.
+    function injectCommand() {
+        if (!root.injectPaste) return "true"
+        return "if pgrep -x ydotoold >/dev/null 2>&1; then ydotool key 29:1 47:1 47:0 29:0 2>/dev/null; fi"
+    }
+
     function copy(raw) {
         root.loading = true
-        shCmd("printf '%s' " + sq(raw) + " | " + root.binary + " decode | wl-copy")
+        shCmd(root.decodeToClipboard(raw))
         Qt.callLater(() => root.loading = false)
     }
 
     function paste(raw) {
-        shCmd("printf '%s' " + sq(raw) + " | " + root.binary + " decode | wl-copy && sleep "
-            + (root.pasteDelayMs / 1000).toFixed(2) + " && (command -v ydotool >/dev/null && ydotool key 29:1 47:1 47:0 29:0 || true)")
+        shCmd(root.decodeToClipboard(raw) + " && sleep "
+            + (root.pasteDelayMs / 1000).toFixed(2) + " && " + root.injectCommand())
         root.pasteRequested(raw)
     }
 
@@ -184,6 +256,7 @@ Scope {
             if (exitCode === 0) {
                 root.entries = listProc.buffer
                 root.available = true
+                root.rememberTimes()
                 // Drop pins whose entry no longer exists in the history
                 // (e.g. it was wiped or deleted), so stale rows can't linger.
                 const entrySet = new Set(root.entries)
@@ -230,8 +303,24 @@ Scope {
         }
     }
 
+    Process {
+        id: timesProc
+        command: ["bash", "-c", "[ -f ~/.cache/quickshell-clipboard/times.json ] && cat ~/.cache/quickshell-clipboard/times.json"]
+        stdout: SplitParser {
+            onRead: (line) => {
+                if (!line) return
+                try {
+                    root.seen = JSON.parse(line)
+                } catch (e) {
+                    console.error("[Clipboard] bad times.json:", e.message)
+                }
+            }
+        }
+    }
+
     Component.onCompleted: {
         loadPins()
+        loadTimes()
         refresh()
     }
 }

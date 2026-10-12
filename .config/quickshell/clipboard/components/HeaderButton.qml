@@ -5,30 +5,36 @@ Rectangle {
     id: btn
     property string text: ""
     property var iconColor: "#ffffff"
-    property var pressedColor
+    property var pressedColor: btn.iconColor
     signal triggered()
 
     width: 30
     height: 30
     radius: 8
-    color: btn.hovered
-        ? Qt.rgba(1, 1, 1, 0.10)
-        : Qt.rgba(1, 1, 1, 0)
+
+    // Hover/press state comes from the MouseArea (Rectangle has no
+    // `hovered` property; `down` used to be a manually toggled flag).
+    readonly property bool hovered: mouse.containsMouse
+    readonly property bool down: mouse.pressed
+
+    color: btn.down
+        ? Qt.rgba(1, 1, 1, 0.16)
+        : (btn.hovered ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(1, 1, 1, 0))
     Behavior on color { ColorAnimation { duration: 100 } }
 
     Text {
         anchors.centerIn: parent
         text: btn.text
-        color: btn.pressedColor !== undefined && btn.down ? btn.pressedColor : btn.iconColor
+        color: btn.down ? btn.pressedColor : btn.iconColor
         font.pixelSize: 14
     }
+
     MouseArea {
+        id: mouse
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onPressed: btn.down = true
-        onReleased: btn.down = false
+        propagateComposedEvents: false
         onClicked: btn.triggered()
     }
-    property bool down: false
 }

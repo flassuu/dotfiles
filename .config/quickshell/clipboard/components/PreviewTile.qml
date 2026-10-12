@@ -24,7 +24,7 @@ Rectangle {
     Component.onCompleted: {
         // Only image entries (cliphist binary data blobs) can be decoded.
         // Plain text entries must never reach `cliphist decode`.
-        if (/^\d+\t\[\[binary data.*\]\]$/.test(tile.raw)) {
+        if (/^\d+\t\[\[\s*binary data.*\]\s*\]$/.test(tile.raw)) {
             decodeProc.running = true
         }
     }

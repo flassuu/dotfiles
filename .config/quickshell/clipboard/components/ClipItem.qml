@@ -16,6 +16,11 @@ Rectangle {
     property var pal: null
     property bool isCurrent: false
 
+    // Hover comes from the row MouseArea plus the action chips: a Rectangle
+    // has no `hovered` property, so `root.hovered` was always undefined and
+    // the row highlight / action chips never appeared on hover.
+    readonly property bool hovered: mouse.containsMouse || chipRow.anyHovered
+
     // Fixed row height: a binding like `rowLayout.height + 12` created a
     // feedback loop (height of rowLayout depends on parent height) and made
     // every delegate collapse into a thin strip.
@@ -25,6 +30,34 @@ Rectangle {
     color: root.isCurrent || root.hovered
         ? Qt.rgba(1, 1, 1, 0.05) : "transparent"
     Behavior on color { ColorAnimation { duration: 120 } }
+
+    // --- interaction ---
+    // Declared BEFORE the content: later siblings stack on top in QML, so a
+    // full-row MouseArea placed after the layout swallowed every click on the
+    // pin/paste/delete chips (they appeared dead and only copied the row).
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
+        // no onWheel handler: wheel events fall through to the ListView
+        acceptedButtons: Qt.LeftButton
+        onClicked: {
+            if (root.service) root.service.copy(root.entry.raw)
+            root.copied = true
+            copyTimer.restart()
+        }
+        onDoubleClicked: {
+            if (root.service) root.service.paste(root.entry.raw)
+        }
+    }
+
+    property bool copied: false
+    Timer {
+        id: copyTimer
+        interval: 550
+        onTriggered: root.copied = false
+    }
 
     Rectangle {
         // Accent edge shown for the pinned entry.
@@ -112,7 +145,7 @@ Rectangle {
             Text {
                 width: parent.width
                 elide: Text.ElideRight
-                text: (root.entry.pinned ? "📌 · " : "") + root.service.relTime(root.service.tsOf(root.entry.raw))
+                text: (root.entry.pinned ? "★ · " : "") + root.service.relTime(root.service.timeOf(root.entry.raw))
                 color: root.pal.fgMuted
                 font.family: "monospace"
                 font.pixelSize: 11
@@ -121,55 +154,39 @@ Rectangle {
 
         // --- hover actions ---
         Row {
+            id: chipRow
+            // Keeps the row "hovered" while the cursor is on a chip, so the
+            // chips don't disappear when the pointer enters them.
+            property bool anyHovered: pinChip.hovered || pasteChip.hovered || delChip.hovered
+            readonly property bool show: root.hovered || root.isCurrent || chipRow.anyHovered
             Layout.alignment: Qt.AlignVCenter
             spacing: 6
-            visible: root.hovered || root.isCurrent
-            opacity: root.hovered || root.isCurrent ? 1 : 0
+            visible: chipRow.show
+            opacity: chipRow.show ? 1 : 0
             Behavior on opacity { NumberAnimation { duration: 100 } }
 
             ActionChip {
-                text: "📌"
+                id: pinChip
+                text: "★"
                 active: root.entry.pinned
                 accent: root.pal.accent
                 activeColor: root.pal.accent
                 onTriggered: root.pinRequested(root.entry.raw)
             }
             ActionChip {
+                id: pasteChip
                 text: "⏎"
                 accent: root.pal.fg
                 onTriggered: root.pasteRequested(root.entry.raw)
             }
             ActionChip {
-                text: "🗑"
+                id: delChip
+                text: "✕"
                 accent: root.pal.fgMuted
                 activeColor: root.pal.danger
                 onTriggered: root.deleteRequested(root.entry.raw)
             }
         }
-    }
-
-    // --- interaction ---
-    MouseArea {
-        id: mouse
-        anchors.fill: parent
-        hoverEnabled: true
-        // no onWheel handler: wheel events fall through to the ListView
-        acceptedButtons: Qt.LeftButton
-        onClicked: {
-            if (root.service) root.service.copy(root.entry.raw)
-            root.copied = true
-            copyTimer.restart()
-        }
-        onDoubleClicked: {
-            if (root.service) root.service.paste(root.entry.raw)
-        }
-    }
-
-    property bool copied: false
-    Timer {
-        id: copyTimer
-        interval: 550
-        onTriggered: root.copied = false
     }
 
     // Signals bubbled to the shell.
