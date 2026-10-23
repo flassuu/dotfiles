@@ -1,46 +1,72 @@
+# Yazi configuration — schema of 26.9.1
+# https://yazi-rs.github.io/docs/configuration/yazi
+
+#:schema https://yazi-rs.github.io/schemas/yazi.json
+
 [mgr]
-sort_by	= "alphabetical"
+sort_by        = "alphabetical"
 sort_sensitive = false
-sort_reverse = false
+sort_reverse   = false
 sort_dir_first = true
-sort_translit = false
-linemode = "size"
-show_hidden = true
-show_symlink = true
-scrolloff = 5
-mouse_events = [ "click", "scroll" ]
-title_format = "Yazi: {cwd}"
+sort_translit  = false
+linemode       = "size"
+show_hidden    = true
+show_symlink   = true
+scrolloff      = 5
+mouse_events   = [ "click", "scroll", "drag" ]
 
 [opener]
-read = [
-    { run = 'bat "$@"', block = true, desc = "Read with Bat" }
-]
+# Paths are injected with %s: yazi runs openers through `sh -c` without
+# positional arguments, so "$@" would always expand to an empty string.
 edit = [
-    { run = 'nvim "$@"', block = true, desc = "NeoVim" }
+	{ run = "nvim %s", desc = "NeoVim", block = true },
+]
+read = [
+	{ run = "bat --paging=never %s", desc = "Read with bat", block = true },
 ]
 view = [
-    { run = 'imv "$@"', detach = true, desc = "View Image" }
+	{ run = "imv %s", desc = "View image (imv)", orphan = true },
 ]
 play = [
-    { run = 'mpv "$@"', detach = true, desc = "Play Video" }
+	{ run = "mpv %s", desc = "Play media (mpv)", orphan = true },
+]
+word = [
+	{ run = "wordcraft %s", desc = "WordCraft", orphan = true },
 ]
 
 [open]
 rules = [
-    { url = "*.conf",	use = ["edit", "read"] },
-    { url = "*.json",	use = ["edit", "read"] },
-    { url = "*.lua",	use = ["edit", "read"] },
-    { url = "*.txt",	use = ["edit", "read"] },
+	# Word-processor documents: WordCraft
+	{ url  = "*.{doc,docx,docm,dot,dotx,dotm,rtf,odt}", use = [ "word", "open" ] },
+	{ mime = "application/msword*", use = [ "word", "open" ] },
+	{ mime = "application/rtf", use = [ "word", "open" ] },
+	{ mime = "text/rtf", use = [ "word", "open" ] },
+	{ mime = "application/vnd.ms-word*", use = [ "word", "open" ] },
+	{ mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.*", use = [ "word", "open" ] },
+	{ mime = "application/vnd.oasis.opendocument.text*", use = [ "word", "open" ] },
 
-    { mime = "text/*",  use = ["edit", "read"] },
+	# Folders
+	{ mime = "folder/*", use = [ "edit", "open" ] },
 
-    { url = "*.pdf",   use = "view" }, 
-    { mime = "image/*", use = "view" },
+	# Text and code
+	{ mime = "text/*", use = [ "edit", "read" ] },
 
-    { mime = "video/*", use = "play" },
+	# Images and media
+	{ mime = "image/*", use = [ "view", "open" ] },
+	{ mime = "{audio,video}/*", use = [ "play", "open" ] },
 
-	{ url = "*",       use = "edit" }
+	# Archives: extract here or hand over to the desktop
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "open" ] },
+
+	# Empty files
+	{ mime = "inode/empty", use = "edit" },
+
+	# Files that vanished from a remote mount
+	{ mime = "vfs/{absent,stale}", use = "download" },
+
+	# Trash bin
+	{ mime = "trash/**", use = [ "open", "trash" ] },
+
+	# Anything else: the system default application
+	{ url = "*", use = "open" },
 ]
-
-[preview]
-graphics_protocol = "kitty"
