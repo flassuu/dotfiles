@@ -54,6 +54,7 @@ hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(V.scrPath .. "/screenshot
 
 -- Custom scripts
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(V.lockscreen)) -- lock screen
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(V.winState .. " save -fsp"), { description = "Remember window state" }) -- -w adds the workspace slot
 
 -- Move/Change window focus
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))

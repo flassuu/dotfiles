@@ -9,6 +9,7 @@ local V = require("config.variables")
 hl.on("hyprland.start", function()
 	-- scripts
 	hl.exec_cmd(V.scrPath .. "/awww-watcher") -- save current wallpaper as cache
+	hl.exec_cmd(V.winState .. " sync") -- regenerate the window-state Lua cache after hand edits
 
 	-- apps
 	hl.exec_cmd("waybar") -- system bar

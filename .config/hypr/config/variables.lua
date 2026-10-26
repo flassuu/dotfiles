@@ -9,6 +9,7 @@ local home = os.getenv("HOME")
 return {
 	-- Path
 	scrPath = home .. "/.local/bin", -- default scripts directory
+	winState = home .. "/.config/hypr/scripts/hypr-window-state", -- per-window geometry memory
 
 	-- Apps
 	term = "kitty",

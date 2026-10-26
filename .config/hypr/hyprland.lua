@@ -17,6 +17,7 @@
 --   config/monitors     -> outputs, resolution and scaling
 --   config/style        -> general, group and decoration settings
 --   config/variables    -> shared paths and defaults
+--   config/window-state -> remembered window geometry (SUPER + I)
 --   config/windowrules  -> window and layer rules
 
 require("config.animations")
@@ -30,4 +31,5 @@ require("config.misc")
 require("config.monitors")
 require("config.style")
 require("config.variables")
+require("config.window-state")
 require("config.windowrules")
