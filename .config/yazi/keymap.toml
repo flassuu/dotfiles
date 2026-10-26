@@ -13,6 +13,6 @@ prepend_keymap = [
 	# Open the current directory in a new terminal window, detached from yazi.
 	{ on = "<C-Enter>", run = 'shell --orphan -- kitty --directory "$(pwd)"', desc = "Open current dir in a new terminal" },
 
-	# Drag the selected files out of the terminal ($@ is expanded by `shell`).
-	{ on = "<C-g>", run = 'shell "ripdrag \"$@\" --and-exit &" --confirm', desc = "Drag and drop selected files" },
+	# Drag the selected files out of the terminal (%s is expanded by yazi).
+	{ on = "<C-g>", run = "shell --orphan -- ripdrag %s --and-exit &", desc = "Drag and drop selected files" },
 ]
