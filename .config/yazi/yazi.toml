@@ -35,31 +35,36 @@ word = [
 ]
 
 [open]
+# The first opener in `use` runs on a plain open, the rest are offered by
+# `open --interactive` (<S-Enter>). Rules are matched top to bottom.
 rules = [
-	# Word-processor documents: WordCraft
-	{ url  = "*.{doc,docx,docm,dot,dotx,dotm,rtf,odt}", use = [ "word", "open" ] },
-	{ mime = "application/msword*", use = [ "word", "open" ] },
-	{ mime = "application/rtf", use = [ "word", "open" ] },
-	{ mime = "text/rtf", use = [ "word", "open" ] },
-	{ mime = "application/vnd.ms-word*", use = [ "word", "open" ] },
-	{ mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.*", use = [ "word", "open" ] },
-	{ mime = "application/vnd.oasis.opendocument.text*", use = [ "word", "open" ] },
+	# Word-processor documents: WordCraft first, the desktop app as fallback.
+	{ url  = "*.{doc,docx,docm,dot,dotx,dotm,rtf,odt}", use = [ "word", "open", "reveal" ] },
+	{ mime = "application/msword*", use = [ "word", "open", "reveal" ] },
+	{ mime = "application/rtf", use = [ "word", "open", "reveal" ] },
+	{ mime = "text/rtf", use = [ "word", "open", "reveal" ] },
+	{ mime = "application/vnd.ms-word*", use = [ "word", "open", "reveal" ] },
+	{ mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.*", use = [ "word", "open", "reveal" ] },
+	{ mime = "application/vnd.oasis.opendocument.text*", use = [ "word", "open", "reveal" ] },
 
 	# Folders
-	{ mime = "folder/*", use = [ "edit", "open" ] },
+	{ mime = "folder/*", use = [ "edit", "open", "reveal" ] },
 
 	# Text and code
-	{ mime = "text/*", use = [ "edit", "read" ] },
+	{ mime = "text/*", use = [ "edit", "read", "reveal" ] },
+	{ mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = [ "edit", "read", "reveal" ] },
 
-	# Images and media
-	{ mime = "image/*", use = [ "view", "open" ] },
-	{ mime = "{audio,video}/*", use = [ "play", "open" ] },
+	# Images
+	{ mime = "image/*", use = [ "view", "open", "reveal" ] },
 
-	# Archives: extract here or hand over to the desktop
-	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "open" ] },
+	# Audio and video
+	{ mime = "{audio,video}/*", use = [ "play", "open", "reveal" ] },
+
+	# Archives: extract here, or hand over to the desktop
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "open", "reveal" ] },
 
 	# Empty files
-	{ mime = "inode/empty", use = "edit" },
+	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
 
 	# Files that vanished from a remote mount
 	{ mime = "vfs/{absent,stale}", use = "download" },
@@ -68,5 +73,5 @@ rules = [
 	{ mime = "trash/**", use = [ "open", "trash" ] },
 
 	# Anything else: the system default application
-	{ url = "*", use = "open" },
+	{ url = "*", use = [ "open", "reveal" ] },
 ]
