@@ -191,8 +191,10 @@ body {
   --button-radius: var(--input-radius);
 
   /* Callouts */
-  --callout-border-width: 0.25px;
-  --callout-border-opacity: 0.2;
+  /* --callout-* must hold color values: the -rgb triplets used here before
+     are invalid for color-mix()/border colors in current Obsidian. */
+  --callout-border-width: var(--border-width);
+  --callout-border-opacity: 0.5;
   --callout-padding: var(--size-4-3) var(--size-4-3) var(--size-4-3) var(--size-4-6);
   --callout-radius: var(--radius-s);
   --callout-blend-mode: var(--highlight-mix-blend-mode);
@@ -200,30 +202,30 @@ body {
   --callout-title-size: inherit;
   --callout-content-padding: 0;
   --callout-content-background: transparent;
-  --callout-bug: var(--color-red-rgb);
-  --callout-default: var(--color-blue-rgb);
-  --callout-error: var(--color-red-rgb);
-  --callout-example: var(--color-purple-rgb);
-  --callout-fail: var(--color-red-rgb);
-  --callout-important: var(--color-cyan-rgb);
-  --callout-info: var(--color-blue-rgb);
-  --callout-question: var(--color-yellow-rgb);
-  --callout-success: var(--color-green-rgb);
-  --callout-summary: var(--color-cyan-rgb);
-  --callout-tip: var(--color-cyan-rgb);
-  --callout-todo: var(--color-blue-rgb);
-  --callout-warning: var(--color-orange-rgb);
-  --callout-quote: 158, 158, 158;
+  --callout-bug: var(--color-red);
+  --callout-default: var(--color-blue);
+  --callout-error: var(--color-red);
+  --callout-example: var(--color-purple);
+  --callout-fail: var(--color-red);
+  --callout-important: var(--color-cyan);
+  --callout-info: var(--color-blue);
+  --callout-question: var(--color-yellow);
+  --callout-success: var(--color-green);
+  --callout-summary: var(--color-cyan);
+  --callout-tip: var(--color-cyan);
+  --callout-todo: var(--color-blue);
+  --callout-warning: var(--color-orange);
+  --callout-quote: #9e9e9e;
 
   /* Canvas */
   --canvas-background: var(--background-primary);
   --canvas-card-label-color: var(--text-faint);
-  --canvas-color-1: var(--color-red-rgb);
-  --canvas-color-2: var(--color-orange-rgb);
-  --canvas-color-3: var(--color-yellow-rgb);
-  --canvas-color-4: var(--color-green-rgb);
-  --canvas-color-5: var(--color-cyan-rgb);
-  --canvas-color-6: var(--color-purple-rgb);
+  --canvas-color-1: var(--color-red);
+  --canvas-color-2: var(--color-orange);
+  --canvas-color-3: var(--color-yellow);
+  --canvas-color-4: var(--color-green);
+  --canvas-color-5: var(--color-cyan);
+  --canvas-color-6: var(--color-purple);
   --canvas-dot-pattern: var(--color-base-30);
 
   /* Checkboxes */
@@ -926,8 +928,14 @@ h6,
 /* --- Callouts --- */
 .callout {
   --callout-icon: lucide-pencil;
-  border-color: rgb(var(--callout-color), 60%);
-  background-color: rgb(var(--callout-color), 10%);
+
+  mix-blend-mode: normal;
+  border-color: color-mix(in srgb, var(--callout-color) 60%, transparent);
+  background-color: color-mix(in srgb, var(--callout-color) 12%, var(--background));
+}
+
+.callout:hover {
+  border-color: color-mix(in srgb, var(--callout-color) 85%, transparent);
 }
 
 .cm-s-obsidian span.cm-formatting-quote {

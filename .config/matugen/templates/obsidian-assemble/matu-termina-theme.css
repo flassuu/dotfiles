@@ -557,9 +557,21 @@ input[type='checkbox'] {
 }
 
 /* --- Callouts --- */
+/* --callout-color is a color value in current Obsidian (older versions exposed
+   an "r, g, b" triplet), so rgba(var(--callout-color), a) is invalid and both
+   declarations were dropped. The frame is drawn by the native variables. */
 .callout {
-  border: 1px solid rgba(var(--callout-color), 0.4);
-  background-color: rgba(var(--callout-color), 0.06);
+  --callout-border-width: var(--border-thickness);
+  --callout-border-opacity: 0.45;
+
+  mix-blend-mode: normal;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--callout-color) 15%, var(--bg-4));
+  transition: border-color var(--border-hover-transition);
+}
+
+.callout:hover {
+  --callout-border-opacity: 0.7;
 }
 
 /* --- Tables --- */
