@@ -55,7 +55,11 @@ hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd(V.scrPath .. "/screenshot
 -- Custom scripts
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(V.lockscreen)) -- lock screen
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(V.winState .. " save -fsp"), { description = "Remember window state" }) -- -w adds the workspace slot
-
+hl.bind(
+	mainMod .. " + SHIFT + I",
+	hl.dsp.exec_cmd(V.winState .. " forget --active"),
+	{ description = "Forget window state" }
+) -- delete the focused window's record
 -- Move/Change window focus
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
@@ -96,7 +100,7 @@ hl.bind(mainMod .. " + CTRL + ALT + left", hl.dsp.window.move({ workspace = "r-1
 -- floating -> move by delta, tiled -> swap with neighbour in direction.
 -- Same shell pipeline as in the previous config (repeating + description).
 local MOVE_ACTIVE =
-	'grep -q "true" <<< "$(hyprctl activewindow -j | jq -r .floating)" && hyprctl dispatch \'hl.dsp.window.move({ x = %d, y = %d, relative = true })\' || hyprctl dispatch \'hl.dsp.window.move({ direction = \"%s\" })\''
+	'grep -q "true" <<< "$(hyprctl activewindow -j | jq -r .floating)" && hyprctl dispatch \'hl.dsp.window.move({ x = %d, y = %d, relative = true })\' || hyprctl dispatch \'hl.dsp.window.move({ direction = "%s" })\''
 hl.bind(
 	mainMod .. " + SHIFT + CTRL + left",
 	hl.dsp.exec_cmd(string.format(MOVE_ACTIVE, -30, 0, "left")),

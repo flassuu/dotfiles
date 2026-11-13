@@ -134,8 +134,9 @@ local function apply(w, rec, config)
 		end
 	end
 
-	-- Workspace moves are opt-in: `hypr-window-state config set apply_workspace true`.
-	if config.apply_workspace and rec.ws then
+	-- Workspace moves happen whenever the record carries a slot (saved with -w,
+	-- or filled in by hand); without one the window stays where it opened.
+	if rec.ws then
 		hl.dispatch(hl.dsp.window.move({ window = selector, workspace = rec.ws, follow = false }))
 	end
 end
