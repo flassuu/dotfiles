@@ -33,6 +33,9 @@ play = [
 word = [
 	{ run = "wordcraft %s", desc = "WordCraft", orphan = true },
 ]
+pdf = [
+	{ run = "firefox %s", desc = "Firefox", orphan = true },
+]
 
 [open]
 # The first opener in `use` runs on a plain open, the rest are offered by
@@ -46,6 +49,11 @@ rules = [
 	{ mime = "application/vnd.ms-word*", use = [ "word", "open", "reveal" ] },
 	{ mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.*", use = [ "word", "open", "reveal" ] },
 	{ mime = "application/vnd.oasis.opendocument.text*", use = [ "word", "open", "reveal" ] },
+
+	# PDFs: always Firefox, the system default stays as a fallback. The
+	# extension rule also covers files with a missing or wrong MIME type.
+	{ url  = "*.pdf", use = [ "pdf", "open", "reveal" ] },
+	{ mime = "application/pdf", use = [ "pdf", "open", "reveal" ] },
 
 	# Folders
 	{ mime = "folder/*", use = [ "edit", "open", "reveal" ] },
