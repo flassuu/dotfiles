@@ -34,7 +34,7 @@ word = [
 	{ run = "wordcraft %s", desc = "WordCraft", orphan = true },
 ]
 pdf = [
-	{ run = "firefox %s", desc = "Firefox", orphan = true },
+	{ run = "$HOME/.config/hypr/scripts/open-firefox %s", desc = "Firefox", orphan = true },
 ]
 
 [open]

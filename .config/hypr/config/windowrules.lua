@@ -14,3 +14,12 @@ hl.window_rule({
 	float = true,
 	center = true,
 })
+
+-- Opening a file or link from another app (yazi, chat, mail, ...) should bring
+-- the existing browser window into view and switch to its workspace. Scoped to
+-- the browser so background apps cannot steal focus globally.
+hl.window_rule({
+	name = "firefox-focus-on-activate",
+	match = { class = "firefox" },
+	focus_on_activate = true,
+})

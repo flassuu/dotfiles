@@ -1,0 +1,34 @@
+#!/bin/sh
+# Open a file or URL in Firefox and reveal its window.
+#
+# Firefox handles external requests in its existing window, but a terminal or
+# file manager does not pass an xdg-activation token, so Hyprland cannot switch
+# to that window's workspace by itself (focus_on_activate only sees token-based
+# activations). Focus the browser window explicitly after handing over the
+# request; if Firefox is not running yet, the new window opens on the current
+# workspace as usual.
+#
+# Usage: open-firefox [FILE|URL ...]
+
+if ! command -v firefox >/dev/null 2>&1; then
+	echo "open-firefox: firefox not found" >&2
+	exit 1
+fi
+
+firefox "$@" >/dev/null 2>&1 &
+
+# The window exists immediately when Firefox is already running. On a cold
+# start, wait briefly for it; a fresh window takes focus on its own anyway.
+address=""
+i=0
+while [ "$i" -lt 10 ]; do
+	address=$(hyprctl -j clients 2>/dev/null |
+		jq -r '[.[] | select(.class == "firefox")] | sort_by(.focusHistoryID) | .[0].address // empty')
+	[ -n "$address" ] && break
+	i=$((i + 1))
+	sleep 0.05
+done
+
+[ -n "$address" ] || exit 0
+
+hyprctl dispatch "hl.dsp.focus({ window = \"address:$address\" })" >/dev/null 2>&1 || true

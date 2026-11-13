@@ -15,7 +15,7 @@ return {
 	term = "kitty",
 	menu = "rofi -show drun -show-icons",
 	file = "kitty -e yazi",
-	browser = "firefox",
+	browser = home .. "/.config/hypr/scripts/open-firefox", -- Firefox: open and reveal its window
 	office = "libreoffice", -- unused, kept for parity
 	lockscreen = "hyprlock",
 	code = "kitty -e nvim",
